@@ -169,7 +169,7 @@ class KGVisualizer:
             return '#95A5A6'  # Gray
     
     def _get_hierarchical_layout(self, G):
-        """Create hierarchical layout with layers separated vertically."""
+        """Create hierarchical layout with layers positioned: Events (top-left) -> Mechanisms (right, lower) -> Assets (bottom)."""
         pos = {}
         
         # Group nodes by layer
@@ -180,38 +180,73 @@ class KGVisualizer:
                 layers[layer] = []
             layers[layer].append(node)
         
-        # Position each layer
-        layer_y_positions = {
-            1: 1.0,      # Events at top
-            2: 0.5,      # Mechanisms in middle
-            3: 0.0,      # Assets at bottom
-            4: -0.5      # Outcomes below
-        }
+        # Layer positions - ADJUSTED:
+        # Events: top-left (x=-3.0, y starts around 1.2)
+        # Mechanisms: right side, lower vertical (x=3.5, y spreads lower from 0.5 to -1.5)
+        # Assets: bottom horizontal (y=-2.0)
         
-        for layer, nodes in sorted(layers.items()):
-            y_pos = layer_y_positions.get(layer, 0)
+        # Events layer - top-left vertical
+        if 1 in layers:
+            nodes = layers[1]
             num_nodes = len(nodes)
-            
+            y_start = 1.2
+            y_spacing = 0.5  # Spacing between events
+            for i, node in enumerate(nodes):
+                y_pos = y_start - (i * y_spacing)
+                pos[node] = (-3.0, y_pos)
+        
+        # Mechanisms layer - right side, lower, with BETTER spacing to prevent overlaps
+        if 2 in layers:
+            nodes = layers[2]
+            num_nodes = len(nodes)
+            # Spread mechanisms vertically with MUCH more space to prevent overlaps
+            # Use entire vertical range with generous spacing
             if num_nodes == 1:
-                # Single node - center it
-                pos[nodes[0]] = (0, y_pos)
+                y_spacing = 0
             else:
-                # Multiple nodes - spread horizontally within layer
-                x_spacing = 2.5 / max(1, num_nodes - 1)
+                # Total vertical space: 3.0 (from 1.5 to -1.5)
+                # Divide into num_nodes segments
+                y_spacing = 3.0 / (num_nodes - 1) if num_nodes > 1 else 1.5
+            
+            y_start = 1.2  # Start higher to create clear top layer visibility
+            
+            for i, node in enumerate(nodes):
+                y_pos = y_start - (i * y_spacing)
+                pos[node] = (3.5, y_pos)
+        
+        # Assets layer - horizontal at bottom
+        if 3 in layers:
+            nodes = layers[3]
+            num_nodes = len(nodes)
+            if num_nodes == 1:
+                pos[nodes[0]] = (0, -2.0)
+            else:
+                x_spacing = 6.0 / max(1, num_nodes - 1)  # Wide spacing for assets
                 for i, node in enumerate(nodes):
                     x_pos = (i - num_nodes/2 + 0.5) * x_spacing
-                    pos[node] = (x_pos, y_pos)
+                    pos[node] = (x_pos, -2.0)
+        
+        # Outcomes layer - if exists
+        if 4 in layers:
+            nodes = layers[4]
+            num_nodes = len(nodes)
+            for i, node in enumerate(nodes):
+                y_pos = -2.8 - (i - num_nodes/2 + 0.5) * 0.4
+                pos[node] = (0, y_pos)
         
         # Apply spring layout within each layer to avoid overlaps
-        # but preserve layer separation
+        # but preserve layer separation with fixed positions
         try:
-            # Fine-tune positions with spring layout that respects boundaries
+            # Get all nodes in each layer and fix their x-coordinates
+            fixed_nodes = list(pos.keys())
+            
+            # Fine-tune positions with spring layout that respects layer boundaries
             pos = nx.spring_layout(
                 G, 
                 pos=pos,
-                fixed=[],  # Don't fix any nodes, allow adjustment
-                k=1.5,     # Smaller k for tighter layout
-                iterations=100,
+                fixed=fixed_nodes,  # Fix all nodes to their layer positions
+                k=0.8,     # Smaller k for tighter layout
+                iterations=50,
                 seed=42
             )
         except:
@@ -235,10 +270,13 @@ class KGVisualizer:
         # Use hierarchical layout
         pos = self._get_hierarchical_layout(self.G)
         
-        # Add layer background regions
-        ax.axhspan(0.85, 1.15, alpha=0.1, color='red', label='Layer 1')
-        ax.axhspan(0.35, 0.65, alpha=0.1, color='teal', label='Layer 2')
-        ax.axhspan(-0.15, 0.15, alpha=0.1, color='green', label='Layer 3')
+        # Add layer background regions - new layout
+        # Events: left vertical
+        ax.axvspan(-3.5, -2.5, alpha=0.1, color='red', label='Layer 1')
+        # Mechanisms: right vertical (light blue) - covers mechanism column
+        ax.axvspan(2.5, 4.5, alpha=0.15, color='lightblue', label='Layer 2')
+        # Assets: bottom horizontal (green) - covers asset row
+        ax.axhspan(-2.5, -1.8, alpha=0.15, color='lightgreen', label='Layer 3')
         
         # Node colors and sizes
         node_colors = [self._get_node_color(node) for node in self.G.nodes()]
@@ -522,32 +560,40 @@ class KGVisualizer:
     
     def visualize_node_importance(self):
         """Visualize node importance based on degree and evidence."""
-        if not self.G:
-            self._build_networkx_graph()
+        # Ensure full graph is built
+        self._build_networkx_graph()
         
-        # Calculate centrality metrics - FIXED: use undirected measure
+        if self.G.number_of_nodes() == 0:
+            print("❌ No nodes in graph")
+            return
+        
+        # Calculate evidence counts from edges (most important metric)
+        edge_weights = defaultdict(int)
+        for source, target, data in self.G.edges(data=True):
+            evidence = data.get('evidence_count', 1)
+            edge_weights[source] += evidence
+            edge_weights[target] += evidence
+        
+        # Calculate degree centrality
         degree_centrality = nx.degree_centrality(self.G.to_undirected())
         
-        # Get evidence counts from edges
-        edge_weights = defaultdict(float)
-        for source, target, data in self.G.edges(data=True):
-            weight = data.get('weight', 1)
-            edge_weights[source] += weight
-            edge_weights[target] += weight
-        
-        # Combine centrality and edge weights
+        # Combine: edge weight (70%) + centrality (30%)
         importance = {}
         for node in self.G.nodes():
-            centrality_score = degree_centrality.get(node, 0) * 100
             edge_score = edge_weights.get(node, 0)
-            importance[node] = centrality_score + edge_score
+            centrality_score = degree_centrality.get(node, 0) * 50  # Scale for visibility
+            importance[node] = edge_score + centrality_score
         
         # Get top nodes
         top_nodes = sorted(importance.items(), key=lambda x: x[1], reverse=True)[:15]
         
-        fig, ax = plt.subplots(figsize=(12, 8))
+        if len(top_nodes) == 0:
+            print("❌ No nodes to display")
+            return
         
-        node_names = [self.G.nodes[node]['label'][:30] for node, _ in top_nodes]
+        fig, ax = plt.subplots(figsize=(14, 8))
+        
+        node_names = [self.G.nodes[node]['label'][:35] for node, _ in top_nodes]
         scores = [score for _, score in top_nodes]
         colors = [self._get_node_color(node) for node, _ in top_nodes]
         
@@ -555,15 +601,17 @@ class KGVisualizer:
         bars = ax.barh(y_pos, scores, color=colors, alpha=0.85, edgecolor='black', linewidth=1.5)
         ax.set_yticks(y_pos)
         ax.set_yticklabels(node_names, fontsize=10)
-        ax.set_xlabel('Importance Score (Centrality + Edge Weight)', fontsize=12, fontweight='bold')
-        ax.set_title('Top 15 Most Important Nodes', fontsize=14, fontweight='bold', pad=20)
-        ax.grid(axis='x', alpha=0.3)
+        ax.set_xlabel('Importance Score (Evidence Count + Centrality)', fontsize=12, fontweight='bold')
+        ax.set_title('Top 15 Most Important Nodes in Knowledge Graph', fontsize=14, fontweight='bold', pad=20)
+        ax.grid(axis='x', alpha=0.3, linestyle='--')
         
         # Add value labels on bars
         for i, bar in enumerate(bars):
             width = bar.get_width()
-            ax.text(width, bar.get_y() + bar.get_height()/2, f'{width:.1f}',
-                   ha='left', va='center', fontsize=9, fontweight='bold')
+            if width > 0:
+                ax.text(width, bar.get_y() + bar.get_height()/2, f'{width:.0f}',
+                       ha='left', va='center', fontsize=9, fontweight='bold', 
+                       bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.7))
         
         plt.tight_layout()
         output_path = os.path.join(self.output_dir, '05_node_importance.png')
