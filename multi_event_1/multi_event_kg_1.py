@@ -97,6 +97,12 @@ ASSET_KEYWORDS = {
     'energy': ['energy', 'energy sector', 'oil stocks', 'energy stocks'],
     'healthcare': ['healthcare', 'pharma', 'biotech'],
     'consumer': ['consumer', 'consumer staples', 'consumer discretionary'],
+    
+    # Small Caps
+    'small_caps': ['small cap', 'smallcap', 'small-cap', 'russell 2000', 'russell', 'small caps'],
+    
+    # Cryptocurrency
+    'crypto': ['crypto', 'cryptocurrency', 'bitcoin', 'btc', 'digital currency', 'digital asset'],
 }
 
 # Asset type mapping
@@ -132,6 +138,8 @@ ASSET_TYPE_MAP = {
     'financials': 'EquitySector',
     'tech': 'EquitySector',
     'retail': 'EquitySector',
+    'small_caps': 'EquityIndex',
+    'crypto': 'DigitalAsset',
 }
 
 # Asset display names
@@ -166,6 +174,8 @@ ASSET_DISPLAY_NAMES = {
     'financials': 'Financial Sector',
     'tech': 'Technology Sector',
     'retail': 'Retail Sector',
+    'small_caps': 'Small Cap Stocks (Russell 2000)',
+    'crypto': 'Cryptocurrency',
 }
 
 
@@ -590,8 +600,8 @@ def infer_direction_with_context(text: str, event_type: str,
     Infer direction considering event type and mechanisms.
     
     Employment heuristics:
-    - Weak jobs + rate cut bets → dovish → USD down, bonds up, gold up, stocks mixed-positive
-    - Strong jobs + hike worries → hawkish → USD up, bonds down, gold down, stocks mixed-negative
+    - Weak jobs + rate cut bets â†’ dovish â†’ USD down, bonds up, gold up, stocks mixed-positive
+    - Strong jobs + hike worries â†’ hawkish â†’ USD up, bonds down, gold down, stocks mixed-negative
     """
     # Start with movement-based direction
     base_direction = infer_direction_from_movement(text)
@@ -603,7 +613,7 @@ def infer_direction_with_context(text: str, event_type: str,
     if event_type == 'employment' and employment_strength:
         if employment_strength == 'weak':
             if 'mech:rate_cut_bets' in mechanisms or 'mech:dovish_repricing' in mechanisms:
-                # Weak jobs + dovish → generally positive for bonds/gold, negative for USD
+                # Weak jobs + dovish â†’ generally positive for bonds/gold, negative for USD
                 if any(word in text.lower() for word in ['dollar', 'usd', 'greenback']):
                     return 'negative'
                 elif any(word in text.lower() for word in ['bond', 'treasur', 'gold']):
@@ -611,7 +621,7 @@ def infer_direction_with_context(text: str, event_type: str,
         
         elif employment_strength == 'strong':
             if 'mech:rate_hike_worries' in mechanisms or 'mech:hawkish_repricing' in mechanisms:
-                # Strong jobs + hawkish → generally positive for USD, negative for bonds/gold
+                # Strong jobs + hawkish â†’ generally positive for USD, negative for bonds/gold
                 if any(word in text.lower() for word in ['dollar', 'usd', 'greenback']):
                     return 'positive'
                 elif any(word in text.lower() for word in ['bond', 'treasur', 'gold']):
@@ -920,7 +930,7 @@ def build_multi_event_knowledge_graph(relations: Dict, summary: Dict) -> Dict:
     for event_id in sorted(relations['events']):
         event_node = {
             "id": f"event:{event_id}",
-            "type": "MonetaryPolicyEvent" if event_id == 'monetary_policy' else "LaborMarketEvent",
+            "type": "MonetaryPolicyEvent" if event_id in ['rate_cut', 'rate_hike'] else "LaborMarketEvent",
             "name": event_display.get(event_id, event_id.replace('_', ' ').title()),
             "layer": 1,
             "attributes": {
@@ -1148,7 +1158,7 @@ def export_to_csv(relations: Dict, output_dir: str = 'output'):
     df = pd.DataFrame(all_edges)
     output_path = os.path.join(output_dir, 'multi_event_causal_relationships.csv')
     df.to_csv(output_path, index=False, encoding='utf-8')
-    print(f"\n✓ Relationships exported to: {output_path}")
+    print(f"\n Relationships exported to: {output_path}")
 
 
 def export_to_json(kg: Dict, output_dir: str = 'output'):
@@ -1162,7 +1172,7 @@ def export_to_json(kg: Dict, output_dir: str = 'output'):
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(kg, f, indent=2, ensure_ascii=False)
     
-    print(f"\n✓ Knowledge graph exported to: {output_path}")
+    print(f"\n Knowledge graph exported to: {output_path}")
     print(f"  - {kg['metadata']['total_nodes']} nodes")
     print(f"  - {kg['metadata']['total_edges']} edges")
 
@@ -1190,14 +1200,14 @@ def main():
     input_file = 'multi_event_mini.csv'
     
     if not os.path.exists(input_file):
-        print(f"\n❌ Error: Input file '{input_file}' not found!")
+        print(f"\nError: Input file '{input_file}' not found!")
         print(f"   Please ensure '{input_file}' is in the current directory.")
         return
     
     print(f"\nLoading headlines from {input_file}...")
     try:
         df = pd.read_csv(input_file)
-        print(f"✓ CSV file loaded successfully")
+        print(f"CSV file loaded successfully")
         print(f"  - Rows: {len(df)}")
         print(f"  - Columns: {list(df.columns)}")
         
@@ -1211,16 +1221,16 @@ def main():
         # If no title column found, use first column
         if not title_col:
             title_col = df.columns[0]
-            print(f"\n⚠ No 'title' or 'headline' column found.")
+            print(f"\nNo 'title' or 'headline' column found.")
             print(f"  Using first column '{title_col}' as headlines.")
         else:
-            print(f"✓ Using column '{title_col}' for headlines")
+            print(f"Using column '{title_col}' for headlines")
         
         titles = df[title_col].tolist()
-        print(f"✓ Extracted {len(titles)} headlines from CSV")
+        print(f"Extracted {len(titles)} headlines from CSV")
         
     except Exception as e:
-        print(f"\n❌ Error loading CSV file: {e}")
+        print(f"\n Error loading CSV file: {e}")
         return
     
     print("\nExtracting causal relationships...")

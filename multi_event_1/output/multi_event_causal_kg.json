@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "created_at": "2025-11-19T09:05:31.315793Z",
+    "created_at": "2025-11-24T17:13:16.642658Z",
     "source": "Multi-event financial news headline extraction",
     "event_types": [
       "Monetary Policy",
@@ -8,8 +8,8 @@
     ],
     "extraction_method": "Rule-based pattern matching with mechanism layer",
     "architecture": "5-layer: Provenance -> Event -> Mechanism -> Asset -> Outcome",
-    "total_nodes": 60,
-    "total_edges": 251,
+    "total_nodes": 61,
+    "total_edges": 253,
     "description": "Multi-event causal knowledge graph extracted from financial news headlines covering US rate cuts and employment data, with explicit mechanism/context layer"
   },
   "nodes": [
@@ -20,30 +20,30 @@
       "layer": 1,
       "attributes": {
         "event_class": "employment",
-        "mention_count": 2802
+        "mention_count": 2804
       },
       "provenance": {
         "source": "News headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
       "id": "event:rate_cut",
-      "type": "LaborMarketEvent",
+      "type": "MonetaryPolicyEvent",
       "name": "Rate Cut",
       "layer": 1,
       "attributes": {
         "event_class": "rate_cut",
-        "mention_count": 543
+        "mention_count": 544
       },
       "provenance": {
         "source": "News headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
       "id": "event:rate_hike",
-      "type": "LaborMarketEvent",
+      "type": "MonetaryPolicyEvent",
       "name": "Rate Hike",
       "layer": 1,
       "attributes": {
@@ -52,7 +52,7 @@
       },
       "provenance": {
         "source": "News headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -72,7 +72,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -92,7 +92,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -112,7 +112,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -132,7 +132,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -152,7 +152,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -172,7 +172,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -192,7 +192,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -212,7 +212,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -232,7 +232,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -252,7 +252,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -272,7 +272,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -292,7 +292,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -325,7 +325,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -350,7 +350,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -379,7 +379,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -405,7 +405,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -429,7 +429,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -455,7 +455,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -479,7 +479,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -504,7 +504,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -528,7 +528,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -553,7 +553,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -580,7 +580,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -606,7 +606,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -634,7 +634,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -659,7 +659,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -686,7 +686,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -712,7 +712,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -736,7 +736,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -762,7 +762,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -789,7 +789,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -814,7 +814,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -837,7 +837,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -861,7 +861,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -886,7 +886,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -911,7 +911,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -937,7 +937,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -961,7 +961,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -986,7 +986,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1009,7 +1009,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1032,7 +1032,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1056,7 +1056,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1082,7 +1082,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1107,7 +1107,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1131,7 +1131,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1156,7 +1156,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1182,7 +1182,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1206,7 +1206,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1230,7 +1230,35 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
+      }
+    },
+    {
+      "id": "asset:small_caps",
+      "type": "EquityIndex",
+      "name": "Small Cap Stocks (Russell 2000)",
+      "layer": 3,
+      "aliases": [
+        "small cap",
+        "smallcap",
+        "small-cap",
+        "russell 2000",
+        "russell",
+        "small caps"
+      ],
+      "attributes": {
+        "dominant_polarity": "neutral",
+        "relationship_count": 3
+      },
+      "statistics": {
+        "positive_mentions": 1,
+        "negative_mentions": 0,
+        "neutral_mentions": 2,
+        "total_mentions": 3
+      },
+      "provenance": {
+        "source": "Derived from headlines",
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1256,7 +1284,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1284,7 +1312,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1311,7 +1339,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1337,7 +1365,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1363,7 +1391,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1388,7 +1416,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1412,7 +1440,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     },
     {
@@ -1438,7 +1466,7 @@
       },
       "provenance": {
         "source": "Derived from headlines",
-        "created_at": "2025-11-19T09:05:31.315793Z"
+        "created_at": "2025-11-24T17:13:16.642658Z"
       }
     }
   ],
@@ -1518,7 +1546,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e2",
@@ -1597,10 +1625,81 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e3",
+      "type": "Causal",
+      "source": "event:employment",
+      "target": "mech:weak_labor_market",
+      "relation": "TRIGGERS",
+      "polarity": "negative",
+      "evidence_count": 9,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "explicit_on_after": 3,
+        "general_context": 6
+      },
+      "evidence": [
+        {
+          "title": "Mid-Day Update: Stocks Down, But Off Lows After Disappointing Employment Data",
+          "date": "2011-07-08 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/mid-day-update-stocks-down-lows-after-disappointing-employment-data-2011-07-08",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "GLOBAL MARKETS-Wall St extends gains on slowing but strong US labor market",
+          "date": "2023-08-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/global-markets-wall-st-extends-gains-on-slowing-but-strong-us-labor-market-0",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Mid-Day ETF Update: ETFs, Stocks Remain in the Red on Disappointing Labor Market Report",
+          "date": "2017-10-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/mid-day-etf-update-etfs-stocks-remain-red-disappointing-labor-market-report-2017-10-06",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Close Update: Stocks Remain Defensive on Slowing Labor Market, Global Economic Woes",
+          "date": "2016-05-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/close-update-stocks-remain-defensive-slowing-labor-market-global-economic-woes-2016-05-04",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Wall Street Futures Buckle On Soft Labor Market Report",
+          "date": "2018-05-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/wall-street-futures-buckle-soft-labor-market-report-2018-05-04",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Slowing Labor Market Could Push This Leveraged Treasury ETF Higher",
+          "date": "2023-04-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/slowing-labor-market-could-push-this-leveraged-treasury-etf-higher",
+          "pattern": "general_context"
+        },
+        {
+          "title": "US Equity Markets Spiking Lower after Disappointing Employment Data",
+          "date": "2011-06-03 00:00:00 UTC",
+          "url": "https://www.benzinga.com/intraday-update/11/06/1136291/us-equity-markets-spiking-lower-after-disappointing-employment-data",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Stocks Lower after Disappointing Employment Data",
+          "date": "2012-04-09 00:00:00 UTC",
+          "url": "http://www.tradershuddle.com/20120409424267/Stocks/stocks-lower-after-disappointing-employment-data.html",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "US STOCKS-U.S. labor market woes sink Wall Street",
+          "date": "2011-09-02 16:25:00 UTC",
+          "url": "http://www.reuters.com/article/2011/09/02/markets-stocks-idUSN1E7811JI20110902",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e4",
       "type": "Causal",
       "source": "event:employment",
       "target": "mech:after_jobs_report",
@@ -1677,78 +1776,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e4",
-      "type": "Causal",
-      "source": "event:employment",
-      "target": "mech:weak_labor_market",
-      "relation": "TRIGGERS",
-      "polarity": "negative",
-      "evidence_count": 9,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "explicit_on_after": 3,
-        "general_context": 6
-      },
-      "evidence": [
-        {
-          "title": "Mid-Day Update: Stocks Down, But Off Lows After Disappointing Employment Data",
-          "date": "2011-07-08 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/mid-day-update-stocks-down-lows-after-disappointing-employment-data-2011-07-08",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "GLOBAL MARKETS-Wall St extends gains on slowing but strong US labor market",
-          "date": "2023-08-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/global-markets-wall-st-extends-gains-on-slowing-but-strong-us-labor-market-0",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Mid-Day ETF Update: ETFs, Stocks Remain in the Red on Disappointing Labor Market Report",
-          "date": "2017-10-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/mid-day-etf-update-etfs-stocks-remain-red-disappointing-labor-market-report-2017-10-06",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Close Update: Stocks Remain Defensive on Slowing Labor Market, Global Economic Woes",
-          "date": "2016-05-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/close-update-stocks-remain-defensive-slowing-labor-market-global-economic-woes-2016-05-04",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Wall Street Futures Buckle On Soft Labor Market Report",
-          "date": "2018-05-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/wall-street-futures-buckle-soft-labor-market-report-2018-05-04",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Slowing Labor Market Could Push This Leveraged Treasury ETF Higher",
-          "date": "2023-04-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/slowing-labor-market-could-push-this-leveraged-treasury-etf-higher",
-          "pattern": "general_context"
-        },
-        {
-          "title": "US Equity Markets Spiking Lower after Disappointing Employment Data",
-          "date": "2011-06-03 00:00:00 UTC",
-          "url": "https://www.benzinga.com/intraday-update/11/06/1136291/us-equity-markets-spiking-lower-after-disappointing-employment-data",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Stocks Lower after Disappointing Employment Data",
-          "date": "2012-04-09 00:00:00 UTC",
-          "url": "http://www.tradershuddle.com/20120409424267/Stocks/stocks-lower-after-disappointing-employment-data.html",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "US STOCKS-U.S. labor market woes sink Wall Street",
-          "date": "2011-09-02 16:25:00 UTC",
-          "url": "http://www.reuters.com/article/2011/09/02/markets-stocks-idUSN1E7811JI20110902",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e5",
@@ -1807,7 +1835,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e6",
@@ -1886,7 +1914,7 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e7",
@@ -1963,7 +1991,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e8",
@@ -2042,32 +2070,10 @@
           "pattern": "movement_as_expectation"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e9",
-      "type": "Causal",
-      "source": "event:rate_hike",
-      "target": "mech:tight_labor_market",
-      "relation": "TRIGGERS",
-      "polarity": "neutral",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "US STOCKS-Wall St subdued as signs of tight labor market fuel rate hike fears",
-          "date": "2023-01-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-wall-st-subdued-as-signs-of-tight-labor-market-fuel-rate-hike-fears",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e10",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "mech:hawkish_repricing",
@@ -2142,7 +2148,29 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e10",
+      "type": "Causal",
+      "source": "event:rate_hike",
+      "target": "mech:tight_labor_market",
+      "relation": "TRIGGERS",
+      "polarity": "neutral",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "US STOCKS-Wall St subdued as signs of tight labor market fuel rate hike fears",
+          "date": "2023-01-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-wall-st-subdued-as-signs-of-tight-labor-market-fuel-rate-hike-fears",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e11",
@@ -2219,7 +2247,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e12",
@@ -2297,7 +2325,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e13",
@@ -2374,7 +2402,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e14",
@@ -2450,7 +2478,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e15",
@@ -2526,7 +2554,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e16",
@@ -2560,7 +2588,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e17",
@@ -2624,7 +2652,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e18",
@@ -2694,7 +2722,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e19",
@@ -2758,7 +2786,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e20",
@@ -2780,7 +2808,7 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e21",
@@ -2821,7 +2849,7 @@
           "pattern": "asset_move_ahead_event"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e22",
@@ -2901,7 +2929,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e23",
@@ -2979,7 +3007,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e24",
@@ -3056,7 +3084,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e25",
@@ -3133,7 +3161,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e26",
@@ -3210,7 +3238,7 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e27",
@@ -3281,7 +3309,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e28",
@@ -3358,7 +3386,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e29",
@@ -3399,7 +3427,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e30",
@@ -3476,7 +3504,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e31",
@@ -3553,7 +3581,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e32",
@@ -3575,7 +3603,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e33",
@@ -3615,7 +3643,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e34",
@@ -3693,7 +3721,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e35",
@@ -3770,10 +3798,57 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e36",
+      "type": "Causal",
+      "source": "event:rate_cut",
+      "target": "asset:emerging_markets",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 5,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "general_context": 2,
+        "explicit_on_after": 3
+      },
+      "evidence": [
+        {
+          "title": "Emerging Markets and Global Currencies to Jump with Their Hands in Air, as Fed Dangles Keys to Possible US Rate Cut",
+          "date": "2019-06-20 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/emerging-markets-and-global-currencies-to-jump-with-their-hands-in-air-as-fed-dangles-keys",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Emerging debt-Fed rate cut spurs risk appetite",
+          "date": "2008-01-30 22:21:00 UTC",
+          "url": "http://www.reuters.com/article/bondsNews/idUSN3024281020080130",
+          "pattern": "general_context"
+        },
+        {
+          "title": "LatAm stocks rally after Fed rate cut",
+          "date": "2008-01-30 19:29:00 UTC",
+          "url": "http://www.reuters.com/article/companyNews/idUSN3022559920080130",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "WRAPUP 2-Latam stocks, currencies surge after Fed rate cut",
+          "date": "2008-01-22 20:45:00 UTC",
+          "url": "http://www.reuters.com/article/rbssFinancialServicesAndRealEstateNews/idUSN2256717520080122",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "LatAm stocks, currencies gain after Fed rate cut",
+          "date": "2008-01-22 14:42:00 UTC",
+          "url": "http://www.reuters.com/article/companyNews/idUSN2248415220080122",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e37",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:currencies",
@@ -3850,54 +3925,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e37",
-      "type": "Causal",
-      "source": "event:rate_cut",
-      "target": "asset:emerging_markets",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 5,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "general_context": 2,
-        "explicit_on_after": 3
-      },
-      "evidence": [
-        {
-          "title": "Emerging Markets and Global Currencies to Jump with Their Hands in Air, as Fed Dangles Keys to Possible US Rate Cut",
-          "date": "2019-06-20 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/emerging-markets-and-global-currencies-to-jump-with-their-hands-in-air-as-fed-dangles-keys",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Emerging debt-Fed rate cut spurs risk appetite",
-          "date": "2008-01-30 22:21:00 UTC",
-          "url": "http://www.reuters.com/article/bondsNews/idUSN3024281020080130",
-          "pattern": "general_context"
-        },
-        {
-          "title": "LatAm stocks rally after Fed rate cut",
-          "date": "2008-01-30 19:29:00 UTC",
-          "url": "http://www.reuters.com/article/companyNews/idUSN3022559920080130",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "WRAPUP 2-Latam stocks, currencies surge after Fed rate cut",
-          "date": "2008-01-22 20:45:00 UTC",
-          "url": "http://www.reuters.com/article/rbssFinancialServicesAndRealEstateNews/idUSN2256717520080122",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "LatAm stocks, currencies gain after Fed rate cut",
-          "date": "2008-01-22 14:42:00 UTC",
-          "url": "http://www.reuters.com/article/companyNews/idUSN2248415220080122",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e38",
@@ -3977,10 +4005,50 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e39",
+      "type": "Causal",
+      "source": "event:employment",
+      "target": "asset:pound",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 4,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 4
+      },
+      "evidence": [
+        {
+          "title": "Forex Daily Recap – Poor UK Unemployment Data Weighed Down The Cable",
+          "date": "2019-04-16 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/forex-daily-recap-poor-uk-unemployment-data-weighed-down-cable-2019-04-16",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Sterling steady as all eyes turn to U.S. jobs report",
+          "date": "2016-05-07 04:45:00 UTC",
+          "url": "http://www.reuters.com/article/britain-sterling-open-idUSL5N1831EJ",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Pound Erases Drop Versus Euro on Unemployment Rate, BOE Minutes",
+          "date": "2012-08-15 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2012-08-15/pound-erases-drop-versus-euro-on-unemployment-rate-boe-minutes.html\n",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Pound Is Little Changed Against Euro Before Labor Market Report",
+          "date": "2012-12-12 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2012-12-12/pound-is-little-changed-against-euro-before-labor-market-report.html\n",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e40",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:currencies",
@@ -4055,47 +4123,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e40",
-      "type": "Causal",
-      "source": "event:employment",
-      "target": "asset:pound",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 4,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 4
-      },
-      "evidence": [
-        {
-          "title": "Forex Daily Recap – Poor UK Unemployment Data Weighed Down The Cable",
-          "date": "2019-04-16 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/forex-daily-recap-poor-uk-unemployment-data-weighed-down-cable-2019-04-16",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Sterling steady as all eyes turn to U.S. jobs report",
-          "date": "2016-05-07 04:45:00 UTC",
-          "url": "http://www.reuters.com/article/britain-sterling-open-idUSL5N1831EJ",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Pound Erases Drop Versus Euro on Unemployment Rate, BOE Minutes",
-          "date": "2012-08-15 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2012-08-15/pound-erases-drop-versus-euro-on-unemployment-rate-boe-minutes.html\n",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Pound Is Little Changed Against Euro Before Labor Market Report",
-          "date": "2012-12-12 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2012-12-12/pound-is-little-changed-against-euro-before-labor-market-report.html\n",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e41",
@@ -4171,7 +4199,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e42",
@@ -4249,7 +4277,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e43",
@@ -4285,7 +4313,7 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e44",
@@ -4363,7 +4391,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e45",
@@ -4415,7 +4443,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e46",
@@ -4449,7 +4477,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e47",
@@ -4471,7 +4499,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e48",
@@ -4506,7 +4534,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e49",
@@ -4553,7 +4581,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e50",
@@ -4632,10 +4660,32 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e51",
+      "type": "Causal",
+      "source": "event:rate_hike",
+      "target": "mech:unemployment_low",
+      "relation": "TRIGGERS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Brazil's February Unemployment Rate Rises to 5.7%",
+          "date": "2012-03-22 00:00:00 UTC",
+          "url": "https://www.benzinga.com/news/12/03/2442959/brazils-february-unemployment-rate-rises-to-5-7",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e52",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "mech:unemployment_high",
@@ -4708,29 +4758,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e52",
-      "type": "Causal",
-      "source": "event:rate_hike",
-      "target": "mech:unemployment_low",
-      "relation": "TRIGGERS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "Brazil's February Unemployment Rate Rises to 5.7%",
-          "date": "2012-03-22 00:00:00 UTC",
-          "url": "https://www.benzinga.com/news/12/03/2442959/brazils-february-unemployment-rate-rises-to-5-7",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e53",
@@ -4759,7 +4787,7 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e54",
@@ -4811,7 +4839,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e55",
@@ -4871,7 +4899,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e56",
@@ -4893,7 +4921,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e57",
@@ -4971,7 +4999,7 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e58",
@@ -5006,7 +5034,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e59",
@@ -5041,7 +5069,7 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e60",
@@ -5093,10 +5121,32 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e61",
+      "type": "Causal",
+      "source": "event:rate_cut",
+      "target": "asset:small_caps",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Hot Growth Stocks Include This Small Cap Leader That Benefits From A Fed Rate Cut",
+          "date": "2019-09-13 00:00:00 UTC",
+          "url": "http://www.investors.com/stock-lists/sector-leaders/hot-growth-stocks-include-this-small-cap-leader-that-benefits-from-a-fed-rate-cut/?src=A00237A&ven=BenzingaCP&src=AURLAAM",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e62",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:ust10y",
@@ -5134,10 +5184,10 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e62",
+      "id": "edge:e63",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:aussie",
@@ -5156,10 +5206,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e63",
+      "id": "edge:e64",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:aussie",
@@ -5203,10 +5253,39 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e64",
+      "id": "edge:e65",
+      "type": "Causal",
+      "source": "event:employment",
+      "target": "asset:small_caps",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 2,
+      "primary_pattern": "event_causes_asset",
+      "pattern_distribution": {
+        "event_causes_asset": 1,
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Tame Jobs Report Lifts Stocks; Apple Leads Dow; Small Caps Outperform",
+          "date": "2016-09-02 00:00:00 UTC",
+          "url": "http://www.investors.com/market-trend/stock-market-today/tame-jobs-report-lifts-stocks-apple-leads-dow-small-caps-outperform/?ven=BenzingaCP&src=AURLAAM",
+          "pattern": "event_causes_asset"
+        },
+        {
+          "title": "Small Cap Staffing Stock News: More Earnings Reports Plus a Jobs Report",
+          "date": "2015-12-10 00:00:00 UTC",
+          "url": "http://www.smallcapnetwork.com/Small-Cap-Staffing-Stock-News-More-Earnings-Reports-Plus-a-Jobs-Report/s/via/3414/article/view/p/mid/1/id/2289/",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e66",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:copper",
@@ -5250,10 +5329,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e65",
+      "id": "edge:e67",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:yields",
@@ -5285,10 +5364,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e66",
+      "id": "edge:e68",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:sp500",
@@ -5314,10 +5393,32 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e67",
+      "id": "edge:e69",
+      "type": "Causal",
+      "source": "event:rate_hike",
+      "target": "asset:yields",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Treasury yields moving higher as solid jobs reports assures rate hike",
+          "date": "2015-12-04 00:00:00 UTC",
+          "url": "http://seekingalpha.com/news/2965946-treasury-yields-moving-higher-as-solid-jobs-reports-assures-rate-hike?source=partner_benzinga",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e70",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "asset:bonds",
@@ -5342,32 +5443,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e68",
-      "type": "Causal",
-      "source": "event:rate_hike",
-      "target": "asset:yields",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "Treasury yields moving higher as solid jobs reports assures rate hike",
-          "date": "2015-12-04 00:00:00 UTC",
-          "url": "http://seekingalpha.com/news/2965946-treasury-yields-moving-higher-as-solid-jobs-reports-assures-rate-hike?source=partner_benzinga",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e69",
+      "id": "edge:e71",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:credit_spreads",
@@ -5386,10 +5465,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e70",
+      "id": "edge:e72",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:mexico_stocks",
@@ -5463,10 +5542,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e71",
+      "id": "edge:e73",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:peso",
@@ -5540,10 +5619,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e72",
+      "id": "edge:e74",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:yen",
@@ -5594,10 +5673,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e73",
+      "id": "edge:e75",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:brazil_stocks",
@@ -5671,10 +5750,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e74",
+      "id": "edge:e76",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "mech:dovish_repricing",
@@ -5724,39 +5803,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e75",
-      "type": "Causal",
-      "source": "event:rate_hike",
-      "target": "asset:currencies",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 2,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1,
-        "asset_move_ahead_event": 1
-      },
-      "evidence": [
-        {
-          "title": "FOREX-Dollar up as U.S. jobs report eyed for signal on Fed rate hike",
-          "date": "2015-10-03 04:25:00 UTC",
-          "url": "http://www.reuters.com/article/markets-forex-idUSL5N1220IY20151002",
-          "pattern": "general_context"
-        },
-        {
-          "title": "FOREX-Dollar slides as jobs report dims rate hike outlook",
-          "date": "2008-06-06 16:26:00 UTC",
-          "url": "http://www.reuters.com/article/usDollarRpt/idUSN0643359620080606",
-          "pattern": "asset_move_ahead_event"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e76",
+      "id": "edge:e77",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "asset:dollar",
@@ -5782,10 +5832,39 @@
           "pattern": "asset_move_ahead_event"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e77",
+      "id": "edge:e78",
+      "type": "Causal",
+      "source": "event:rate_hike",
+      "target": "asset:currencies",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 2,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1,
+        "asset_move_ahead_event": 1
+      },
+      "evidence": [
+        {
+          "title": "FOREX-Dollar up as U.S. jobs report eyed for signal on Fed rate hike",
+          "date": "2015-10-03 04:25:00 UTC",
+          "url": "http://www.reuters.com/article/markets-forex-idUSL5N1220IY20151002",
+          "pattern": "general_context"
+        },
+        {
+          "title": "FOREX-Dollar slides as jobs report dims rate hike outlook",
+          "date": "2008-06-06 16:26:00 UTC",
+          "url": "http://www.reuters.com/article/usDollarRpt/idUSN0643359620080606",
+          "pattern": "asset_move_ahead_event"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e79",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:ust30y",
@@ -5804,10 +5883,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e78",
+      "id": "edge:e80",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:ust2y",
@@ -5826,10 +5905,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e79",
+      "id": "edge:e81",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:asia_stocks",
@@ -5854,10 +5933,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e80",
+      "id": "edge:e82",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "mech:rate_cut_fears",
@@ -5931,10 +6010,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e81",
+      "id": "edge:e83",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:ftse",
@@ -5972,10 +6051,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e82",
+      "id": "edge:e84",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:yen",
@@ -6025,10 +6104,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e83",
+      "id": "edge:e85",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:canadian_dollar",
@@ -6047,10 +6126,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e84",
+      "id": "edge:e86",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:copper",
@@ -6100,10 +6179,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e85",
+      "id": "edge:e87",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:ftse",
@@ -6134,10 +6213,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e86",
+      "id": "edge:e88",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:nikkei",
@@ -6204,10 +6283,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e87",
+      "id": "edge:e89",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:brazil_stocks",
@@ -6268,10 +6347,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e88",
+      "id": "edge:e90",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:europe_stocks",
@@ -6321,10 +6400,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e89",
+      "id": "edge:e91",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:nikkei",
@@ -6343,10 +6422,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e90",
+      "id": "edge:e92",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:real",
@@ -6377,10 +6456,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e91",
+      "id": "edge:e93",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:peso",
@@ -6430,10 +6509,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e92",
+      "id": "edge:e94",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:ust10y",
@@ -6452,10 +6531,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e93",
+      "id": "edge:e95",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:canada_stocks",
@@ -6493,10 +6572,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e94",
+      "id": "edge:e96",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:hk_stocks",
@@ -6527,10 +6606,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e95",
+      "id": "edge:e97",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "asset:seoul_stocks",
@@ -6556,10 +6635,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e96",
+      "id": "edge:e98",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:asia_stocks",
@@ -6591,10 +6670,10 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e97",
+      "id": "edge:e99",
       "type": "Causal",
       "source": "event:rate_cut",
       "target": "mech:ahead_of_jobs_report",
@@ -6613,10 +6692,10 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e98",
+      "id": "edge:e100",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:gasoline",
@@ -6653,10 +6732,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e99",
+      "id": "edge:e101",
       "type": "Causal",
       "source": "event:employment",
       "target": "asset:rand",
@@ -6681,10 +6760,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e100",
+      "id": "edge:e102",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "asset:euro",
@@ -6703,10 +6782,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e101",
+      "id": "edge:e103",
       "type": "Causal",
       "source": "event:rate_hike",
       "target": "mech:rate_cut_bets",
@@ -6725,10 +6804,75 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e102",
+      "id": "edge:e104",
+      "type": "Causal",
+      "source": "mech:weak_labor_market",
+      "target": "asset:stocks",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 8,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "explicit_on_after": 3,
+        "general_context": 5
+      },
+      "evidence": [
+        {
+          "title": "Mid-Day Update: Stocks Down, But Off Lows After Disappointing Employment Data",
+          "date": "2011-07-08 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/mid-day-update-stocks-down-lows-after-disappointing-employment-data-2011-07-08",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "GLOBAL MARKETS-Wall St extends gains on slowing but strong US labor market",
+          "date": "2023-08-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/global-markets-wall-st-extends-gains-on-slowing-but-strong-us-labor-market-0",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Mid-Day ETF Update: ETFs, Stocks Remain in the Red on Disappointing Labor Market Report",
+          "date": "2017-10-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/mid-day-etf-update-etfs-stocks-remain-red-disappointing-labor-market-report-2017-10-06",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Close Update: Stocks Remain Defensive on Slowing Labor Market, Global Economic Woes",
+          "date": "2016-05-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/close-update-stocks-remain-defensive-slowing-labor-market-global-economic-woes-2016-05-04",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Wall Street Futures Buckle On Soft Labor Market Report",
+          "date": "2018-05-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/wall-street-futures-buckle-soft-labor-market-report-2018-05-04",
+          "pattern": "general_context"
+        },
+        {
+          "title": "US Equity Markets Spiking Lower after Disappointing Employment Data",
+          "date": "2011-06-03 00:00:00 UTC",
+          "url": "https://www.benzinga.com/intraday-update/11/06/1136291/us-equity-markets-spiking-lower-after-disappointing-employment-data",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Stocks Lower after Disappointing Employment Data",
+          "date": "2012-04-09 00:00:00 UTC",
+          "url": "http://www.tradershuddle.com/20120409424267/Stocks/stocks-lower-after-disappointing-employment-data.html",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "US STOCKS-U.S. labor market woes sink Wall Street",
+          "date": "2011-09-02 16:25:00 UTC",
+          "url": "http://www.reuters.com/article/2011/09/02/markets-stocks-idUSN1E7811JI20110902",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e105",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:stocks",
@@ -6805,75 +6949,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e103",
-      "type": "Causal",
-      "source": "mech:weak_labor_market",
-      "target": "asset:stocks",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 8,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "explicit_on_after": 3,
-        "general_context": 5
-      },
-      "evidence": [
-        {
-          "title": "Mid-Day Update: Stocks Down, But Off Lows After Disappointing Employment Data",
-          "date": "2011-07-08 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/mid-day-update-stocks-down-lows-after-disappointing-employment-data-2011-07-08",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "GLOBAL MARKETS-Wall St extends gains on slowing but strong US labor market",
-          "date": "2023-08-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/global-markets-wall-st-extends-gains-on-slowing-but-strong-us-labor-market-0",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Mid-Day ETF Update: ETFs, Stocks Remain in the Red on Disappointing Labor Market Report",
-          "date": "2017-10-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/mid-day-etf-update-etfs-stocks-remain-red-disappointing-labor-market-report-2017-10-06",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Close Update: Stocks Remain Defensive on Slowing Labor Market, Global Economic Woes",
-          "date": "2016-05-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/close-update-stocks-remain-defensive-slowing-labor-market-global-economic-woes-2016-05-04",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Wall Street Futures Buckle On Soft Labor Market Report",
-          "date": "2018-05-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/wall-street-futures-buckle-soft-labor-market-report-2018-05-04",
-          "pattern": "general_context"
-        },
-        {
-          "title": "US Equity Markets Spiking Lower after Disappointing Employment Data",
-          "date": "2011-06-03 00:00:00 UTC",
-          "url": "https://www.benzinga.com/intraday-update/11/06/1136291/us-equity-markets-spiking-lower-after-disappointing-employment-data",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Stocks Lower after Disappointing Employment Data",
-          "date": "2012-04-09 00:00:00 UTC",
-          "url": "http://www.tradershuddle.com/20120409424267/Stocks/stocks-lower-after-disappointing-employment-data.html",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "US STOCKS-U.S. labor market woes sink Wall Street",
-          "date": "2011-09-02 16:25:00 UTC",
-          "url": "http://www.reuters.com/article/2011/09/02/markets-stocks-idUSN1E7811JI20110902",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e104",
+      "id": "edge:e106",
       "type": "Causal",
       "source": "mech:hawkish_repricing",
       "target": "asset:stocks",
@@ -6947,10 +7026,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e105",
+      "id": "edge:e107",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:stocks",
@@ -7025,10 +7104,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e106",
+      "id": "edge:e108",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:nasdaq",
@@ -7102,10 +7181,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e107",
+      "id": "edge:e109",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:stocks",
@@ -7181,10 +7260,88 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e108",
+      "id": "edge:e110",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:yields",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 11,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "movement_before": 7,
+        "general_context": 3,
+        "explicit_on_after": 1
+      },
+      "evidence": [
+        {
+          "title": "Stocks Little Changed Before the Open as Bond Yields Stabilize, U.S. ADP Jobs Report in Focus",
+          "date": "2023-10-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/stocks-little-changed-before-the-open-as-bond-yields-stabilize-u.s.-adp-jobs-report-in",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Nasdaq Futures Climb as Bond Yields Retreat, U.S. Jobs Report Looms",
+          "date": "2023-10-05 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/nasdaq-futures-climb-as-bond-yields-retreat-u.s.-jobs-report-looms",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Nasdaq Futures Slip as Bond Yields Rebound, U.S. Jobs Report Looms",
+          "date": "2023-10-05 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/nasdaq-futures-slip-as-bond-yields-rebound-u.s.-jobs-report-looms",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Stocks Set to Open Lower as Bond Yields Rebound, U.S. Jobs Report Looms",
+          "date": "2023-10-05 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/stocks-set-to-open-lower-as-bond-yields-rebound-u.s.-jobs-report-looms",
+          "pattern": "general_context"
+        },
+        {
+          "title": "GLOBAL MARKETS-Stocks, yields slide after U.S. jobs report as Omicron looms",
+          "date": "2021-12-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/global-markets-stocks-yields-slide-after-u.s.-jobs-report-as-omicron-looms",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "TREASURIES-U.S. yields steady ahead of U.S. jobs report",
+          "date": "2016-08-04 16:13:00 UTC",
+          "url": "http://www.reuters.com/article/usa-bonds-idUSL1N1AK1EK",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "TREASURIES-U.S. 10-year yields above 2 pct before jobs report",
+          "date": "2013-02-01 06:16:00 UTC",
+          "url": "http://www.reuters.com/article/2013/02/01/markets-bonds-treasuries-idUSL5N0B18ML20130201",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "TREASURIES-Yields hit lowest in over 2 weeks ahead of April jobs report",
+          "date": "2016-05-06 15:49:00 UTC",
+          "url": "http://www.reuters.com/article/usa-bonds-idUSL2N1821T7",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "TREASURIES-Long-term U.S. bond yields dip ahead of jobs report",
+          "date": "2014-04-03 15:57:00 UTC",
+          "url": "http://www.reuters.com/article/2014/04/03/markets-usa-bonds-idUSL1N0MV1FQ20140403",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Treasury Yields Rise From 5-Week Low Before Jobs Report",
+          "date": "2013-03-04 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-03-04/treasuries-rise-for-third-day-on-italy-election-concern.html\n",
+          "pattern": "movement_before"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e111",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:yields",
@@ -7260,88 +7417,88 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e109",
+      "id": "edge:e112",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
-      "target": "asset:yields",
-      "relation": "INDIRECTLY_AFFECTS",
-      "polarity": "neutral",
-      "evidence_count": 11,
+      "target": "asset:sp500",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 12,
       "primary_pattern": "movement_before",
       "pattern_distribution": {
         "movement_before": 7,
-        "general_context": 3,
+        "general_context": 4,
         "explicit_on_after": 1
       },
       "evidence": [
         {
-          "title": "Stocks Little Changed Before the Open as Bond Yields Stabilize, U.S. ADP Jobs Report in Focus",
-          "date": "2023-10-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/stocks-little-changed-before-the-open-as-bond-yields-stabilize-u.s.-adp-jobs-report-in",
+          "title": "US STOCKS-S&P 500 barely gains ahead of Powell testimony, jobs report",
+          "date": "2023-03-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-sp-500-barely-gains-ahead-of-powell-testimony-jobs-report",
           "pattern": "movement_before"
         },
         {
-          "title": "Nasdaq Futures Climb as Bond Yields Retreat, U.S. Jobs Report Looms",
-          "date": "2023-10-05 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/nasdaq-futures-climb-as-bond-yields-retreat-u.s.-jobs-report-looms",
+          "title": "S&P Futures Climb as Investors Await Key U.S. Jobs Report",
+          "date": "2023-10-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/sp-futures-climb-as-investors-await-key-u.s.-jobs-report",
           "pattern": "general_context"
         },
         {
-          "title": "Nasdaq Futures Slip as Bond Yields Rebound, U.S. Jobs Report Looms",
-          "date": "2023-10-05 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/nasdaq-futures-slip-as-bond-yields-rebound-u.s.-jobs-report-looms",
+          "title": "S&P Futures Tread Water as Investors Await Key U.S. Jobs Report",
+          "date": "2023-10-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/sp-futures-tread-water-as-investors-await-key-u.s.-jobs-report",
           "pattern": "general_context"
         },
         {
-          "title": "Stocks Set to Open Lower as Bond Yields Rebound, U.S. Jobs Report Looms",
-          "date": "2023-10-05 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/stocks-set-to-open-lower-as-bond-yields-rebound-u.s.-jobs-report-looms",
+          "title": "Opening View: DJIA, SPX Edge Lower Ahead of ADP Employment Data",
+          "date": "2010-08-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/opening-view-djia-spx-edge-lower-ahead-adp-employment-data-2010-08-04",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "US STOCKS-S&P, Nasdaq futures at record highs before January jobs report",
+          "date": "2021-02-05 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-sp-nasdaq-futures-at-record-highs-before-january-jobs-report-2021-02-05",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "US STOCKS-S&P futures at record high ahead of nonfarm payrolls data",
+          "date": "2021-07-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-sp-futures-at-record-high-ahead-of-nonfarm-payrolls-data-2021-07-02",
           "pattern": "general_context"
         },
         {
-          "title": "GLOBAL MARKETS-Stocks, yields slide after U.S. jobs report as Omicron looms",
-          "date": "2021-12-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/global-markets-stocks-yields-slide-after-u.s.-jobs-report-as-omicron-looms",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "TREASURIES-U.S. yields steady ahead of U.S. jobs report",
-          "date": "2016-08-04 16:13:00 UTC",
-          "url": "http://www.reuters.com/article/usa-bonds-idUSL1N1AK1EK",
+          "title": "Dow Jones Industrial Average Slips Ahead of Jobs Report; S&P 500 Outperforms",
+          "date": "2017-02-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-slips-ahead-jobs-report-sp-500-outperforms-2017-02-02",
           "pattern": "movement_before"
         },
         {
-          "title": "TREASURIES-U.S. 10-year yields above 2 pct before jobs report",
-          "date": "2013-02-01 06:16:00 UTC",
-          "url": "http://www.reuters.com/article/2013/02/01/markets-bonds-treasuries-idUSL5N0B18ML20130201",
+          "title": "Jobs Report Comes In Lower Than Expected, S&P 500 Futures Fall Under 2,100",
+          "date": "2016-11-04 00:00:00 UTC",
+          "url": "https://www.benzinga.com/news/16/11/8652420/jobs-report-comes-in-lower-than-expected-s-p-500-futures-fall-under-2-100",
+          "pattern": "general_context"
+        },
+        {
+          "title": "US STOCKS-S&P; 500 futures flat before Feb. jobs report",
+          "date": "2007-03-09 12:12:00 UTC",
+          "url": "http://www.reuters.com/article/bondsNews/idUSN0942706720070309",
           "pattern": "movement_before"
         },
         {
-          "title": "TREASURIES-Yields hit lowest in over 2 weeks ahead of April jobs report",
-          "date": "2016-05-06 15:49:00 UTC",
-          "url": "http://www.reuters.com/article/usa-bonds-idUSL2N1821T7",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "TREASURIES-Long-term U.S. bond yields dip ahead of jobs report",
-          "date": "2014-04-03 15:57:00 UTC",
-          "url": "http://www.reuters.com/article/2014/04/03/markets-usa-bonds-idUSL1N0MV1FQ20140403",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Treasury Yields Rise From 5-Week Low Before Jobs Report",
-          "date": "2013-03-04 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-03-04/treasuries-rise-for-third-day-on-italy-election-concern.html\n",
+          "title": "S&P; ends flat ahead of jobs report; Internet names gain",
+          "date": "2014-05-01 17:11:00 UTC",
+          "url": "http://www.reuters.com/article/2014/05/01/us-markets-stocks-idUSBREA360QI20140501",
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e110",
+      "id": "edge:e113",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:sp500",
@@ -7417,88 +7574,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e111",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:sp500",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 12,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "movement_before": 7,
-        "general_context": 4,
-        "explicit_on_after": 1
-      },
-      "evidence": [
-        {
-          "title": "US STOCKS-S&P 500 barely gains ahead of Powell testimony, jobs report",
-          "date": "2023-03-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-sp-500-barely-gains-ahead-of-powell-testimony-jobs-report",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "S&P Futures Climb as Investors Await Key U.S. Jobs Report",
-          "date": "2023-10-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/sp-futures-climb-as-investors-await-key-u.s.-jobs-report",
-          "pattern": "general_context"
-        },
-        {
-          "title": "S&P Futures Tread Water as Investors Await Key U.S. Jobs Report",
-          "date": "2023-10-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/sp-futures-tread-water-as-investors-await-key-u.s.-jobs-report",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Opening View: DJIA, SPX Edge Lower Ahead of ADP Employment Data",
-          "date": "2010-08-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/opening-view-djia-spx-edge-lower-ahead-adp-employment-data-2010-08-04",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "US STOCKS-S&P, Nasdaq futures at record highs before January jobs report",
-          "date": "2021-02-05 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-sp-nasdaq-futures-at-record-highs-before-january-jobs-report-2021-02-05",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "US STOCKS-S&P futures at record high ahead of nonfarm payrolls data",
-          "date": "2021-07-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-sp-futures-at-record-high-ahead-of-nonfarm-payrolls-data-2021-07-02",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Dow Jones Industrial Average Slips Ahead of Jobs Report; S&P 500 Outperforms",
-          "date": "2017-02-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-slips-ahead-jobs-report-sp-500-outperforms-2017-02-02",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Jobs Report Comes In Lower Than Expected, S&P 500 Futures Fall Under 2,100",
-          "date": "2016-11-04 00:00:00 UTC",
-          "url": "https://www.benzinga.com/news/16/11/8652420/jobs-report-comes-in-lower-than-expected-s-p-500-futures-fall-under-2-100",
-          "pattern": "general_context"
-        },
-        {
-          "title": "US STOCKS-S&P; 500 futures flat before Feb. jobs report",
-          "date": "2007-03-09 12:12:00 UTC",
-          "url": "http://www.reuters.com/article/bondsNews/idUSN0942706720070309",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "S&P; ends flat ahead of jobs report; Internet names gain",
-          "date": "2014-05-01 17:11:00 UTC",
-          "url": "http://www.reuters.com/article/2014/05/01/us-markets-stocks-idUSBREA360QI20140501",
-          "pattern": "movement_before"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e112",
+      "id": "edge:e114",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:bonds",
@@ -7574,10 +7653,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e113",
+      "id": "edge:e115",
       "type": "Causal",
       "source": "mech:tight_labor_market",
       "target": "asset:stocks",
@@ -7638,10 +7717,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e114",
+      "id": "edge:e116",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:canada_stocks",
@@ -7673,10 +7752,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e115",
+      "id": "edge:e117",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:commodities",
@@ -7708,56 +7787,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e116",
-      "type": "Causal",
-      "source": "mech:after_jobs_report",
-      "target": "asset:silver",
-      "relation": "INDIRECTLY_AFFECTS",
-      "polarity": "neutral",
-      "evidence_count": 5,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "explicit_on_after": 5
-      },
-      "evidence": [
-        {
-          "title": "Gold and Silver Miners Soar on the Heels of Weaker Employment Data -- Is This Just the Beginning?",
-          "date": "2016-06-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/gold-and-silver-miners-soar-heels-weaker-employment-data-just-beginning-2016-06-03",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gold, Silver ETFs Hit Six-Month Highs On Jobs Report",
-          "date": "2012-09-07 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/gold-silver-etfs-hit-six-month-highs-jobs-report-2012-09-07",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Shares of several gold and silver mining companies are trading lower as the US dollar strengthens following a strong US jobs report.",
-          "date": "2019-07-05 00:00:00 UTC",
-          "url": "https://www.benzinga.com/markets/wiim/19/07/14034303/shares-of-several-gold-and-silver-mining-companies-are-trading-lower-as-the-us-dollar-strengthens-fo",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gold, Silver Spike Higher Following Jobs Report",
-          "date": "2012-09-07 00:00:00 UTC",
-          "url": "https://www.benzinga.com/etfs/sector-etfs/12/09/2891909/gold-silver-spike-higher-following-jobs-report",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gold Pops, Silver Sputters on Weak Jobs Report",
-          "date": "2011-07-08 00:00:00 UTC",
-          "url": "https://www.benzinga.com/content/thestreet-com/11/07/1749664/gold-pops-silver-sputters-on-weak-jobs-report",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e117",
+      "id": "edge:e118",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:gold",
@@ -7831,10 +7864,134 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e118",
+      "id": "edge:e119",
+      "type": "Causal",
+      "source": "mech:after_jobs_report",
+      "target": "asset:silver",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 5,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "explicit_on_after": 5
+      },
+      "evidence": [
+        {
+          "title": "Gold and Silver Miners Soar on the Heels of Weaker Employment Data -- Is This Just the Beginning?",
+          "date": "2016-06-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/gold-and-silver-miners-soar-heels-weaker-employment-data-just-beginning-2016-06-03",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gold, Silver ETFs Hit Six-Month Highs On Jobs Report",
+          "date": "2012-09-07 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/gold-silver-etfs-hit-six-month-highs-jobs-report-2012-09-07",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Shares of several gold and silver mining companies are trading lower as the US dollar strengthens following a strong US jobs report.",
+          "date": "2019-07-05 00:00:00 UTC",
+          "url": "https://www.benzinga.com/markets/wiim/19/07/14034303/shares-of-several-gold-and-silver-mining-companies-are-trading-lower-as-the-us-dollar-strengthens-fo",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gold, Silver Spike Higher Following Jobs Report",
+          "date": "2012-09-07 00:00:00 UTC",
+          "url": "https://www.benzinga.com/etfs/sector-etfs/12/09/2891909/gold-silver-spike-higher-following-jobs-report",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gold Pops, Silver Sputters on Weak Jobs Report",
+          "date": "2011-07-08 00:00:00 UTC",
+          "url": "https://www.benzinga.com/content/thestreet-com/11/07/1749664/gold-pops-silver-sputters-on-weak-jobs-report",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e120",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:dow",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 16,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "movement_before": 11,
+        "general_context": 3,
+        "explicit_on_after": 2
+      },
+      "evidence": [
+        {
+          "title": "Dow Jones Surges Ahead of Jobs Report",
+          "date": "2016-03-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-jones-surges-ahead-of-jobs-report-2016-03-03",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Opening View: DJIA Futures Flat Ahead of ADP Employment Data",
+          "date": "2011-02-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/opening-view-djia-futures-flat-ahead-adp-employment-data-2011-02-02",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Opening View: DJIA, SPX Edge Lower Ahead of ADP Employment Data",
+          "date": "2010-08-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/opening-view-djia-spx-edge-lower-ahead-adp-employment-data-2010-08-04",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Close Update: Dow Rallies Above 25,000 as Stocks Hit More Records Ahead of Key Jobs Report",
+          "date": "2018-01-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/close-update-dow-rallies-above-25000-stocks-hit-more-records-ahead-key-jobs-report-2018-01",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Opening View: DJIA Futures Flat Ahead of Employment Data",
+          "date": "2011-03-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/opening-view-djia-futures-flat-ahead-employment-data-2011-03-02",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Opening View: DJIA Bulls Hold Their Breath Ahead of August Employment Data",
+          "date": "2010-09-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/opening-view-djia-bulls-hold-their-breath-ahead-august-employment-data-2010-09-03",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Dow Smashes 25K Ahead of Jobs Report",
+          "date": "2018-01-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-smashes-25k-ahead-jobs-report-2018-01-04",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Dow Jones Industrial Average Nabs Record Close Ahead of Jobs Report",
+          "date": "2017-06-01 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-nabs-record-close-ahead-jobs-report-2017-06-01",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Dow Jones Industrial Average Slips Ahead of Jobs Report; S&P 500 Outperforms",
+          "date": "2017-02-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-slips-ahead-jobs-report-sp-500-outperforms-2017-02-02",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Dow Secures Triple-Digit Gain as Employment Data Looms",
+          "date": "2014-01-07 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/dow-secures-triple-digit-gain-employment-data-looms-2014-01-07",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e121",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:dow",
@@ -7910,88 +8067,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e119",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:dow",
-      "relation": "INDIRECTLY_AFFECTS",
-      "polarity": "neutral",
-      "evidence_count": 16,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "movement_before": 11,
-        "general_context": 3,
-        "explicit_on_after": 2
-      },
-      "evidence": [
-        {
-          "title": "Dow Jones Surges Ahead of Jobs Report",
-          "date": "2016-03-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-jones-surges-ahead-of-jobs-report-2016-03-03",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Opening View: DJIA Futures Flat Ahead of ADP Employment Data",
-          "date": "2011-02-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/opening-view-djia-futures-flat-ahead-adp-employment-data-2011-02-02",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Opening View: DJIA, SPX Edge Lower Ahead of ADP Employment Data",
-          "date": "2010-08-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/opening-view-djia-spx-edge-lower-ahead-adp-employment-data-2010-08-04",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Close Update: Dow Rallies Above 25,000 as Stocks Hit More Records Ahead of Key Jobs Report",
-          "date": "2018-01-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/close-update-dow-rallies-above-25000-stocks-hit-more-records-ahead-key-jobs-report-2018-01",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Opening View: DJIA Futures Flat Ahead of Employment Data",
-          "date": "2011-03-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/opening-view-djia-futures-flat-ahead-employment-data-2011-03-02",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Opening View: DJIA Bulls Hold Their Breath Ahead of August Employment Data",
-          "date": "2010-09-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/opening-view-djia-bulls-hold-their-breath-ahead-august-employment-data-2010-09-03",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Dow Smashes 25K Ahead of Jobs Report",
-          "date": "2018-01-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-smashes-25k-ahead-jobs-report-2018-01-04",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Dow Jones Industrial Average Nabs Record Close Ahead of Jobs Report",
-          "date": "2017-06-01 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-nabs-record-close-ahead-jobs-report-2017-06-01",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Dow Jones Industrial Average Slips Ahead of Jobs Report; S&P 500 Outperforms",
-          "date": "2017-02-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-jones-industrial-average-slips-ahead-jobs-report-sp-500-outperforms-2017-02-02",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Dow Secures Triple-Digit Gain as Employment Data Looms",
-          "date": "2014-01-07 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/dow-secures-triple-digit-gain-employment-data-looms-2014-01-07",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e120",
+      "id": "edge:e122",
       "type": "Causal",
       "source": "mech:hawkish_repricing",
       "target": "asset:sp500",
@@ -8010,10 +8089,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e121",
+      "id": "edge:e123",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:financials",
@@ -8070,10 +8149,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e122",
+      "id": "edge:e124",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:reit",
@@ -8148,10 +8227,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e123",
+      "id": "edge:e125",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:nasdaq",
@@ -8189,10 +8268,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e124",
+      "id": "edge:e126",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:retail",
@@ -8224,10 +8303,63 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e125",
+      "id": "edge:e127",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:canada_stocks",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 6,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "explicit_on_after": 2,
+        "movement_before": 4
+      },
+      "evidence": [
+        {
+          "title": "CANADA STOCKS-TSX futures slip on caution ahead of jobs report",
+          "date": "2022-05-06 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/canada-stocks-tsx-futures-slip-on-caution-ahead-of-jobs-report",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "CANADA STOCKS-TSX futures fall on caution ahead of employment data",
+          "date": "2023-02-10 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/canada-stocks-tsx-futures-fall-on-caution-ahead-of-employment-data",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "CANADA STOCKS-TSX poised to open lower ahead of U.S. jobs report",
+          "date": "2014-08-01 07:31:00 UTC",
+          "url": "http://www.reuters.com/article/2014/08/01/markets-canada-stocks-idUSL4N0Q73ZN20140801",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "CANADA STOCKS-TSX set to open higher ahead of employment data",
+          "date": "2015-02-07 07:22:00 UTC",
+          "url": "http://www.reuters.com/article/2015/02/06/markets-canada-stocks-idUSL4N0VG5N020150206",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "CANADA STOCKS-TSX futures trade lower ahead of jobs report",
+          "date": "2014-11-08 07:42:00 UTC",
+          "url": "http://www.reuters.com/article/2014/11/07/markets-canada-stocks-idUSL4N0SX6AL20141107",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "CANADA STOCKS-TSX futures higher ahead of U.S. jobs report",
+          "date": "2016-06-04 07:27:00 UTC",
+          "url": "http://www.reuters.com/article/canada-stocks-idUSL4N18V3J0",
+          "pattern": "movement_before"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e128",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:canada_stocks",
@@ -8301,63 +8433,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e126",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:canada_stocks",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 6,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "explicit_on_after": 2,
-        "movement_before": 4
-      },
-      "evidence": [
-        {
-          "title": "CANADA STOCKS-TSX futures slip on caution ahead of jobs report",
-          "date": "2022-05-06 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/canada-stocks-tsx-futures-slip-on-caution-ahead-of-jobs-report",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "CANADA STOCKS-TSX futures fall on caution ahead of employment data",
-          "date": "2023-02-10 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/canada-stocks-tsx-futures-fall-on-caution-ahead-of-employment-data",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "CANADA STOCKS-TSX poised to open lower ahead of U.S. jobs report",
-          "date": "2014-08-01 07:31:00 UTC",
-          "url": "http://www.reuters.com/article/2014/08/01/markets-canada-stocks-idUSL4N0Q73ZN20140801",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "CANADA STOCKS-TSX set to open higher ahead of employment data",
-          "date": "2015-02-07 07:22:00 UTC",
-          "url": "http://www.reuters.com/article/2015/02/06/markets-canada-stocks-idUSL4N0VG5N020150206",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "CANADA STOCKS-TSX futures trade lower ahead of jobs report",
-          "date": "2014-11-08 07:42:00 UTC",
-          "url": "http://www.reuters.com/article/2014/11/07/markets-canada-stocks-idUSL4N0SX6AL20141107",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "CANADA STOCKS-TSX futures higher ahead of U.S. jobs report",
-          "date": "2016-06-04 07:27:00 UTC",
-          "url": "http://www.reuters.com/article/canada-stocks-idUSL4N18V3J0",
-          "pattern": "movement_before"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e127",
+      "id": "edge:e129",
       "type": "Causal",
       "source": "mech:rate_hike_bets",
       "target": "asset:stocks",
@@ -8383,112 +8462,7 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e128",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:energy",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 2,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "movement_before": 2
-      },
-      "evidence": [
-        {
-          "title": "European Stocks Advance Led by Miners, Oil Stocks Ahead of US Jobs Report",
-          "date": "2016-06-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/european-stocks-advance-led-miners-oil-stocks-ahead-us-jobs-report-2016-06-03",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Close Update: Wall Street Retreats Before Jobs Report as Energy, Tech Slide",
-          "date": "2017-08-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/close-update-wall-street-retreats-jobs-report-energy-tech-slide-2017-08-03",
-          "pattern": "movement_before"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e129",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:crude",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 17,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "movement_before": 13,
-        "explicit_on_after": 4
-      },
-      "evidence": [
-        {
-          "title": "European Stocks Advance Led by Miners, Oil Stocks Ahead of US Jobs Report",
-          "date": "2016-06-03 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/european-stocks-advance-led-miners-oil-stocks-ahead-us-jobs-report-2016-06-03",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Stock Market Today: Oil Slammed Ahead of Jobs Report",
-          "date": "2016-07-07 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/stock-market-today-oil-slammed-ahead-jobs-report-2016-07-07",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "US STOCKS-Futures climb on lower oil prices; private jobs report in focus",
-          "date": "2022-06-02 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-futures-climb-on-lower-oil-prices-private-jobs-report-in-focus",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Stocks Fall As Oil Plummets Ahead Of Key Jobs Report",
-          "date": "2016-07-07 00:00:00 UTC",
-          "url": "http://www.investors.com/market-trend/stock-market-today/stocks-fall-as-oil-plummets-ahead-of-key-jobs-report/?ven=BenzingaCP&src=AURLAAM",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "NYMEX-Crude rises ahead of December jobs report",
-          "date": "2011-01-07 08:14:00 UTC",
-          "url": "http://www.reuters.com/article/2011/01/07/markets-energy-nymex-idUSN0729606120110107",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "World stocks rise, but Wall St. dips with oil ahead of jobs report",
-          "date": "2016-07-08 16:39:00 UTC",
-          "url": "http://www.reuters.com/article/us-global-markets-idUSKCN0ZM021",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "GLOBAL MARKETS-World stocks rise, but Wall St dips with oil ahead of jobs report",
-          "date": "2016-07-08 16:37:00 UTC",
-          "url": "http://www.reuters.com/article/global-markets-idUSL1N19T241",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "GLOBAL MARKETS-Shares rise on optimism ahead of U.S. jobs report, oil slumps",
-          "date": "2015-04-03 11:36:00 UTC",
-          "url": "http://www.reuters.com/article/2015/04/02/markets-global-idUSL2N0WZ0MK20150402",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "UPDATE 3-Oil edges above $107 before U.S. jobs report",
-          "date": "2012-12-07 04:43:00 UTC",
-          "url": "http://www.reuters.com/article/2012/12/07/markets-oil-idUSL5E8N733520121207",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Brent edges over $111; all eyes on U.S. jobs report",
-          "date": "2013-12-05 22:54:00 UTC",
-          "url": "http://www.reuters.com/article/2013/12/06/markets-oil-idUSL4N0JL0LL20131206",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e130",
@@ -8564,10 +8538,115 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e131",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:crude",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 17,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "movement_before": 13,
+        "explicit_on_after": 4
+      },
+      "evidence": [
+        {
+          "title": "European Stocks Advance Led by Miners, Oil Stocks Ahead of US Jobs Report",
+          "date": "2016-06-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/european-stocks-advance-led-miners-oil-stocks-ahead-us-jobs-report-2016-06-03",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Stock Market Today: Oil Slammed Ahead of Jobs Report",
+          "date": "2016-07-07 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/stock-market-today-oil-slammed-ahead-jobs-report-2016-07-07",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "US STOCKS-Futures climb on lower oil prices; private jobs report in focus",
+          "date": "2022-06-02 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-futures-climb-on-lower-oil-prices-private-jobs-report-in-focus",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Stocks Fall As Oil Plummets Ahead Of Key Jobs Report",
+          "date": "2016-07-07 00:00:00 UTC",
+          "url": "http://www.investors.com/market-trend/stock-market-today/stocks-fall-as-oil-plummets-ahead-of-key-jobs-report/?ven=BenzingaCP&src=AURLAAM",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "NYMEX-Crude rises ahead of December jobs report",
+          "date": "2011-01-07 08:14:00 UTC",
+          "url": "http://www.reuters.com/article/2011/01/07/markets-energy-nymex-idUSN0729606120110107",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "World stocks rise, but Wall St. dips with oil ahead of jobs report",
+          "date": "2016-07-08 16:39:00 UTC",
+          "url": "http://www.reuters.com/article/us-global-markets-idUSKCN0ZM021",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "GLOBAL MARKETS-World stocks rise, but Wall St dips with oil ahead of jobs report",
+          "date": "2016-07-08 16:37:00 UTC",
+          "url": "http://www.reuters.com/article/global-markets-idUSL1N19T241",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "GLOBAL MARKETS-Shares rise on optimism ahead of U.S. jobs report, oil slumps",
+          "date": "2015-04-03 11:36:00 UTC",
+          "url": "http://www.reuters.com/article/2015/04/02/markets-global-idUSL2N0WZ0MK20150402",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "UPDATE 3-Oil edges above $107 before U.S. jobs report",
+          "date": "2012-12-07 04:43:00 UTC",
+          "url": "http://www.reuters.com/article/2012/12/07/markets-oil-idUSL5E8N733520121207",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Brent edges over $111; all eyes on U.S. jobs report",
+          "date": "2013-12-05 22:54:00 UTC",
+          "url": "http://www.reuters.com/article/2013/12/06/markets-oil-idUSL4N0JL0LL20131206",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e132",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:energy",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 2,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "movement_before": 2
+      },
+      "evidence": [
+        {
+          "title": "European Stocks Advance Led by Miners, Oil Stocks Ahead of US Jobs Report",
+          "date": "2016-06-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/european-stocks-advance-led-miners-oil-stocks-ahead-us-jobs-report-2016-06-03",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Close Update: Wall Street Retreats Before Jobs Report as Energy, Tech Slide",
+          "date": "2017-08-03 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/close-update-wall-street-retreats-jobs-report-energy-tech-slide-2017-08-03",
+          "pattern": "movement_before"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e133",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:asia_stocks",
@@ -8642,10 +8721,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e132",
+      "id": "edge:e134",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:commodities",
@@ -8677,10 +8756,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e133",
+      "id": "edge:e135",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:gold",
@@ -8712,10 +8791,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e134",
+      "id": "edge:e136",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:dollar",
@@ -8791,10 +8870,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e135",
+      "id": "edge:e137",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:silver",
@@ -8820,10 +8899,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e136",
+      "id": "edge:e138",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:canada_stocks",
@@ -8842,10 +8921,32 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e137",
+      "id": "edge:e139",
+      "type": "Causal",
+      "source": "mech:hawkish_repricing",
+      "target": "asset:tech",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 1,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "explicit_on_after": 1
+      },
+      "evidence": [
+        {
+          "title": "US STOCKS-Tech shares weigh on Wall St as jobs report fuels rate-hike worries",
+          "date": "2023-04-10 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/us-stocks-tech-shares-weigh-on-wall-st-as-jobs-report-fuels-rate-hike-worries",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e140",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:tech",
@@ -8919,32 +9020,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e138",
-      "type": "Causal",
-      "source": "mech:hawkish_repricing",
-      "target": "asset:tech",
-      "relation": "INDIRECTLY_AFFECTS",
-      "polarity": "neutral",
-      "evidence_count": 1,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "explicit_on_after": 1
-      },
-      "evidence": [
-        {
-          "title": "US STOCKS-Tech shares weigh on Wall St as jobs report fuels rate-hike worries",
-          "date": "2023-04-10 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/us-stocks-tech-shares-weigh-on-wall-st-as-jobs-report-fuels-rate-hike-worries",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e139",
+      "id": "edge:e141",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:financials",
@@ -9018,38 +9097,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e140",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:silver",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 2,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 2
-      },
-      "evidence": [
-        {
-          "title": "Silver Prices Forecast: XAG/USD Dips Ahead of US Labor Market Report",
-          "date": "2023-12-07 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/silver-prices-forecast%3A-xag-usd-dips-ahead-of-us-labor-market-report",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Silver Price Forecast: Gains Capped Ahead of Nonfarm Payrolls Report",
-          "date": "2023-07-07 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/silver-price-forecast%3A-gains-capped-ahead-of-nonfarm-payrolls-report",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e141",
+      "id": "edge:e142",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:dollar",
@@ -9125,10 +9176,38 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e142",
+      "id": "edge:e143",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:silver",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 2,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 2
+      },
+      "evidence": [
+        {
+          "title": "Silver Prices Forecast: XAG/USD Dips Ahead of US Labor Market Report",
+          "date": "2023-12-07 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/silver-prices-forecast%3A-xag-usd-dips-ahead-of-us-labor-market-report",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Silver Price Forecast: Gains Capped Ahead of Nonfarm Payrolls Report",
+          "date": "2023-07-07 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/silver-price-forecast%3A-gains-capped-ahead-of-nonfarm-payrolls-report",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e144",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:tech",
@@ -9160,10 +9239,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e143",
+      "id": "edge:e145",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:stocks",
@@ -9237,10 +9316,10 @@
           "pattern": "asset_move_ahead_event"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e144",
+      "id": "edge:e146",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:euro",
@@ -9277,10 +9356,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e145",
+      "id": "edge:e147",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:europe_stocks",
@@ -9354,10 +9433,76 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e146",
+      "id": "edge:e148",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:euro",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 8,
+      "primary_pattern": "movement_before",
+      "pattern_distribution": {
+        "explicit_on_after": 1,
+        "general_context": 2,
+        "movement_before": 5
+      },
+      "evidence": [
+        {
+          "title": "Eurozone Inflation and U.S ADP Nonfarm Payrolls Put the EUR and Dollar in Focus",
+          "date": "2022-02-01 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/eurozone-inflation-and-u.s-adp-nonfarm-payrolls-put-the-eur-and-dollar-in-focus",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Service Sector PMIs and ADP Nonfarm Payrolls to Keep the EUR and USD in Focus",
+          "date": "2022-01-04 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/service-sector-pmis-and-adp-nonfarm-payrolls-to-keep-the-eur-and-usd-in-focus",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Yen Falls Against Dollar and Euro Ahead of U.S. Jobs Report (FXY)",
+          "date": "2011-04-01 00:00:00 UTC",
+          "url": "https://www.benzinga.com/news/11/04/969564/yen-falls-against-dollar-and-euro-ahead-of-u-s-jobs-report-fxy",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "EUR/USD - Euro Steady, Markets Await U.S. Nonfarm Payrolls",
+          "date": "2018-07-06 00:00:00 UTC",
+          "url": "https://seekingalpha.com/article/4185686-eur-usd-euro-steady-markets-await-u-s-nonfarm-payrolls?source=partner_benzinga",
+          "pattern": "general_context"
+        },
+        {
+          "title": "FOREX-Dollar mixed, euro rises before U.S. jobs report, holiday",
+          "date": "2015-04-03 10:20:00 UTC",
+          "url": "http://www.reuters.com/article/2015/04/02/markets-forex-idUSL2N0WZ0NZ20150402",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "EURO GOVT-Bund futures fall ahead of US ADP jobs report",
+          "date": "2009-12-02 02:11:00 UTC",
+          "url": "http://www.reuters.com/article/hotStocksNews/idUSGEE5B02GX20091202",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Dollar Trades Near Four-Day High Versus Euro Before Jobs Report",
+          "date": "2011-02-03 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2011-02-03/dollar-holds-two-day-gain-versus-euro-before-payrolls-report-eu-summit.html\n",
+          "pattern": "movement_before"
+        },
+        {
+          "title": "Yen Trades Near Lowest Since May Against Euro Before Germany Jobs Report",
+          "date": "2011-03-30 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2011-03-30/yen-falls-a-sixth-day-as-u-s-job-optimism-stock-gains-curb-safety-demand.html\n",
+          "pattern": "movement_before"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e149",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:euro",
@@ -9431,76 +9576,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e147",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:euro",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 8,
-      "primary_pattern": "movement_before",
-      "pattern_distribution": {
-        "explicit_on_after": 1,
-        "general_context": 2,
-        "movement_before": 5
-      },
-      "evidence": [
-        {
-          "title": "Eurozone Inflation and U.S ADP Nonfarm Payrolls Put the EUR and Dollar in Focus",
-          "date": "2022-02-01 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/eurozone-inflation-and-u.s-adp-nonfarm-payrolls-put-the-eur-and-dollar-in-focus",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Service Sector PMIs and ADP Nonfarm Payrolls to Keep the EUR and USD in Focus",
-          "date": "2022-01-04 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/service-sector-pmis-and-adp-nonfarm-payrolls-to-keep-the-eur-and-usd-in-focus",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Yen Falls Against Dollar and Euro Ahead of U.S. Jobs Report (FXY)",
-          "date": "2011-04-01 00:00:00 UTC",
-          "url": "https://www.benzinga.com/news/11/04/969564/yen-falls-against-dollar-and-euro-ahead-of-u-s-jobs-report-fxy",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "EUR/USD - Euro Steady, Markets Await U.S. Nonfarm Payrolls",
-          "date": "2018-07-06 00:00:00 UTC",
-          "url": "https://seekingalpha.com/article/4185686-eur-usd-euro-steady-markets-await-u-s-nonfarm-payrolls?source=partner_benzinga",
-          "pattern": "general_context"
-        },
-        {
-          "title": "FOREX-Dollar mixed, euro rises before U.S. jobs report, holiday",
-          "date": "2015-04-03 10:20:00 UTC",
-          "url": "http://www.reuters.com/article/2015/04/02/markets-forex-idUSL2N0WZ0NZ20150402",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "EURO GOVT-Bund futures fall ahead of US ADP jobs report",
-          "date": "2009-12-02 02:11:00 UTC",
-          "url": "http://www.reuters.com/article/hotStocksNews/idUSGEE5B02GX20091202",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Dollar Trades Near Four-Day High Versus Euro Before Jobs Report",
-          "date": "2011-02-03 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2011-02-03/dollar-holds-two-day-gain-versus-euro-before-payrolls-report-eu-summit.html\n",
-          "pattern": "movement_before"
-        },
-        {
-          "title": "Yen Trades Near Lowest Since May Against Euro Before Germany Jobs Report",
-          "date": "2011-03-30 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2011-03-30/yen-falls-a-sixth-day-as-u-s-job-optimism-stock-gains-curb-safety-demand.html\n",
-          "pattern": "movement_before"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e148",
+      "id": "edge:e150",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:dollar",
@@ -9576,10 +9655,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e149",
+      "id": "edge:e151",
       "type": "Causal",
       "source": "mech:wage_pressure",
       "target": "asset:dollar",
@@ -9598,10 +9677,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e150",
+      "id": "edge:e152",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:currencies",
@@ -9676,10 +9755,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e151",
+      "id": "edge:e153",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:crude",
@@ -9753,10 +9832,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e152",
+      "id": "edge:e154",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:consumer",
@@ -9775,10 +9854,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e153",
+      "id": "edge:e155",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:consumer",
@@ -9845,10 +9924,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e154",
+      "id": "edge:e156",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:currencies",
@@ -9923,10 +10002,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e155",
+      "id": "edge:e157",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:canadian_dollar",
@@ -9995,10 +10074,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e156",
+      "id": "edge:e158",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:commodities",
@@ -10072,10 +10151,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e157",
+      "id": "edge:e159",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:gold",
@@ -10150,10 +10229,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e158",
+      "id": "edge:e160",
       "type": "Causal",
       "source": "mech:hawkish_repricing",
       "target": "asset:gold",
@@ -10172,10 +10251,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e159",
+      "id": "edge:e161",
       "type": "Causal",
       "source": "mech:unemployment_high",
       "target": "asset:euro",
@@ -10242,32 +10321,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e160",
-      "type": "Causal",
-      "source": "mech:unemployment_high",
-      "target": "asset:dollar",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "EUR/USD Falls To 1.2900 after U.S. Unemployment Rate Drops To 9.4%",
-          "date": "2011-01-10 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/eurusd-falls-12900-after-us-unemployment-rate-drops-94-2011-01-10",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e161",
+      "id": "edge:e162",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:dollar",
@@ -10298,10 +10355,32 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e162",
+      "id": "edge:e163",
+      "type": "Causal",
+      "source": "mech:unemployment_high",
+      "target": "asset:dollar",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "EUR/USD Falls To 1.2900 after U.S. Unemployment Rate Drops To 9.4%",
+          "date": "2011-01-10 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/eurusd-falls-12900-after-us-unemployment-rate-drops-94-2011-01-10",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e164",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:asia_stocks",
@@ -10369,10 +10448,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e163",
+      "id": "edge:e165",
       "type": "Causal",
       "source": "mech:weak_labor_market",
       "target": "asset:bonds",
@@ -10391,10 +10470,32 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e164",
+      "id": "edge:e166",
+      "type": "Causal",
+      "source": "mech:rate_cut_bets",
+      "target": "asset:yields",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "explicit_on_after": 1
+      },
+      "evidence": [
+        {
+          "title": "TREASURIES-Yields jump, rate cut expectations pared back after strong jobs report",
+          "date": "2023-12-08 00:00:00 UTC",
+          "url": "https://www.nasdaq.com/articles/treasuries-yields-jump-rate-cut-expectations-pared-back-after-strong-jobs-report",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e167",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:bonds",
@@ -10469,32 +10570,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e165",
-      "type": "Causal",
-      "source": "mech:rate_cut_bets",
-      "target": "asset:yields",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "explicit_on_after": 1
-      },
-      "evidence": [
-        {
-          "title": "TREASURIES-Yields jump, rate cut expectations pared back after strong jobs report",
-          "date": "2023-12-08 00:00:00 UTC",
-          "url": "https://www.nasdaq.com/articles/treasuries-yields-jump-rate-cut-expectations-pared-back-after-strong-jobs-report",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e166",
+      "id": "edge:e168",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:healthcare",
@@ -10538,10 +10617,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e167",
+      "id": "edge:e169",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:real",
@@ -10591,10 +10670,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e168",
+      "id": "edge:e170",
       "type": "Causal",
       "source": "mech:wage_pressure",
       "target": "asset:tech",
@@ -10613,10 +10692,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e169",
+      "id": "edge:e171",
       "type": "Causal",
       "source": "mech:wage_pressure",
       "target": "asset:stocks",
@@ -10635,10 +10714,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e170",
+      "id": "edge:e172",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:retail",
@@ -10681,10 +10760,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e171",
+      "id": "edge:e173",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:canadian_dollar",
@@ -10747,10 +10826,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e172",
+      "id": "edge:e174",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:ust2y",
@@ -10787,10 +10866,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e173",
+      "id": "edge:e175",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:pound",
@@ -10857,10 +10936,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e174",
+      "id": "edge:e176",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:brazil_stocks",
@@ -10909,10 +10988,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e175",
+      "id": "edge:e177",
       "type": "Causal",
       "source": "mech:unemployment_high",
       "target": "asset:brazil_stocks",
@@ -10985,10 +11064,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e176",
+      "id": "edge:e178",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:aussie",
@@ -11019,10 +11098,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e177",
+      "id": "edge:e179",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:yen",
@@ -11085,86 +11164,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e178",
-      "type": "Causal",
-      "source": "mech:after_jobs_report",
-      "target": "asset:gasoline",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 10,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "explicit_on_after": 10
-      },
-      "evidence": [
-        {
-          "title": "Crude Oil, RBOB Gasoline, and Copper Futures Moving Lower after Employment Data",
-          "date": "2011-06-03 00:00:00 UTC",
-          "url": "https://www.benzinga.com/etfs/commodities/11/06/1136324/crude-oil-rbob-gasoline-and-copper-futures-moving-lower-after-employm",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Advances on Jobs Report, European Debt Optimism",
-          "date": "2011-08-05 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2011-08-05/gasoline-advances-as-july-u-s-jobs-report-exceeds-estimates.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Futures Advance on Jobs Report, Business Expansion",
-          "date": "2011-02-03 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2011-02-03/gasoline-futures-advance-on-jobs-report-middle-east-protests.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Follows Crude Lower on Jobs Report; Crack Spread Widens",
-          "date": "2013-04-04 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-04-04/gasoline-follows-crude-lower-on-jobs-report-crack-spread-widens.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Futures Fluctuate After Rebounding on U.S. Jobs Report",
-          "date": "2013-03-14 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-03-14/gasoline-futures-fluctuate-after-rebounding-on-u-s-jobs-report.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Rises to Nine-Month High on Jobs Report, Iran Tension",
-          "date": "2012-03-01 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2012-03-01/gasoline-gains-as-jobs-report-indicates-stronger-labor-market.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Rises on Speculation Jobs Report Limits Fed Tapering",
-          "date": "2013-09-06 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-09-06/gasoline-rises-on-speculation-jobs-report-limits-fed-tapering.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Advances as Stocks Rise on U.S. May Jobs Report",
-          "date": "2013-06-07 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-06-07/gasoline-advances-as-stocks-rise-on-u-s-may-jobs-report.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Futures Fluctuate on U.S. Jobs Report and Dollar Slide",
-          "date": "2013-03-07 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2013-03-07/gasoline-futures-fluctuate-on-u-s-jobs-report-and-dollar-slide.html\n",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Gasoline Surges to 32-Month High on Jobs Report, Weaker Dollar",
-          "date": "2011-03-31 00:00:00 UTC",
-          "url": "http://www.bloomberg.com/news/2011-03-31/gasoline-surges-to-32-month-high-on-jobs-report-weaker-dollar.html\n",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e179",
+      "id": "edge:e180",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:copper",
@@ -11239,10 +11242,108 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e180",
+      "id": "edge:e181",
+      "type": "Causal",
+      "source": "mech:after_jobs_report",
+      "target": "asset:gasoline",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 10,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "explicit_on_after": 10
+      },
+      "evidence": [
+        {
+          "title": "Crude Oil, RBOB Gasoline, and Copper Futures Moving Lower after Employment Data",
+          "date": "2011-06-03 00:00:00 UTC",
+          "url": "https://www.benzinga.com/etfs/commodities/11/06/1136324/crude-oil-rbob-gasoline-and-copper-futures-moving-lower-after-employm",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Advances on Jobs Report, European Debt Optimism",
+          "date": "2011-08-05 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2011-08-05/gasoline-advances-as-july-u-s-jobs-report-exceeds-estimates.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Futures Advance on Jobs Report, Business Expansion",
+          "date": "2011-02-03 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2011-02-03/gasoline-futures-advance-on-jobs-report-middle-east-protests.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Follows Crude Lower on Jobs Report; Crack Spread Widens",
+          "date": "2013-04-04 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-04-04/gasoline-follows-crude-lower-on-jobs-report-crack-spread-widens.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Futures Fluctuate After Rebounding on U.S. Jobs Report",
+          "date": "2013-03-14 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-03-14/gasoline-futures-fluctuate-after-rebounding-on-u-s-jobs-report.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Rises to Nine-Month High on Jobs Report, Iran Tension",
+          "date": "2012-03-01 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2012-03-01/gasoline-gains-as-jobs-report-indicates-stronger-labor-market.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Rises on Speculation Jobs Report Limits Fed Tapering",
+          "date": "2013-09-06 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-09-06/gasoline-rises-on-speculation-jobs-report-limits-fed-tapering.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Advances as Stocks Rise on U.S. May Jobs Report",
+          "date": "2013-06-07 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-06-07/gasoline-advances-as-stocks-rise-on-u-s-may-jobs-report.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Futures Fluctuate on U.S. Jobs Report and Dollar Slide",
+          "date": "2013-03-07 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2013-03-07/gasoline-futures-fluctuate-on-u-s-jobs-report-and-dollar-slide.html\n",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Gasoline Surges to 32-Month High on Jobs Report, Weaker Dollar",
+          "date": "2011-03-31 00:00:00 UTC",
+          "url": "http://www.bloomberg.com/news/2011-03-31/gasoline-surges-to-32-month-high-on-jobs-report-weaker-dollar.html\n",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e182",
+      "type": "Causal",
+      "source": "mech:unemployment_low",
+      "target": "asset:yields",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Fed's Bullard: Bond Yield Rise Not A Problem So Far, Watching Bond Market To Monitor Inflation Worries; Very Possible For Unemployment Rate To Fall Fast",
+          "date": "2012-04-05 00:00:00 UTC",
+          "url": "https://www.benzinga.com/markets/bonds/12/04/2476338/feds-bullard-bond-yield-rise-not-a-problem-so-far-watching-bond-market-t",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e183",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:bonds",
@@ -11267,32 +11368,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e181",
-      "type": "Causal",
-      "source": "mech:unemployment_low",
-      "target": "asset:yields",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "Fed's Bullard: Bond Yield Rise Not A Problem So Far, Watching Bond Market To Monitor Inflation Worries; Very Possible For Unemployment Rate To Fall Fast",
-          "date": "2012-04-05 00:00:00 UTC",
-          "url": "https://www.benzinga.com/markets/bonds/12/04/2476338/feds-bullard-bond-yield-rise-not-a-problem-so-far-watching-bond-market-t",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e182",
+      "id": "edge:e184",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:healthcare",
@@ -11317,10 +11396,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e183",
+      "id": "edge:e185",
       "type": "Causal",
       "source": "mech:unemployment_high",
       "target": "asset:gold",
@@ -11345,10 +11424,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e184",
+      "id": "edge:e186",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:financials",
@@ -11381,10 +11460,10 @@
           "pattern": "movement_as_expectation"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e185",
+      "id": "edge:e187",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:energy",
@@ -11421,10 +11500,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e186",
+      "id": "edge:e188",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:aussie",
@@ -11485,10 +11564,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e187",
+      "id": "edge:e189",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:euro",
@@ -11532,10 +11611,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e188",
+      "id": "edge:e190",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:emerging_markets",
@@ -11584,10 +11663,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e189",
+      "id": "edge:e191",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:seoul_stocks",
@@ -11612,10 +11691,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e190",
+      "id": "edge:e192",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:yen",
@@ -11646,10 +11725,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e191",
+      "id": "edge:e193",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:bonds",
@@ -11725,10 +11804,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e192",
+      "id": "edge:e194",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:brazil_stocks",
@@ -11771,38 +11850,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e193",
-      "type": "Causal",
-      "source": "mech:unemployment_high",
-      "target": "asset:ust2y",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 2,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 2
-      },
-      "evidence": [
-        {
-          "title": "UPDATE 3-Canadian unemployment rate hits 1-1/2-year high ahead of election",
-          "date": "2015-10-10 12:45:00 UTC",
-          "url": "http://www.reuters.com/article/canada-economy-jobs-idUSL1N1282WO20151009",
-          "pattern": "general_context"
-        },
-        {
-          "title": "UPDATE 1-Canada sheds 5,700 jobs, unemployment rate hits 2-year high",
-          "date": "2016-02-06 08:34:00 UTC",
-          "url": "http://www.reuters.com/article/canada-economy-employment-idUSL2N15J2DK",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e194",
+      "id": "edge:e195",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:ust2y",
@@ -11845,10 +11896,38 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e195",
+      "id": "edge:e196",
+      "type": "Causal",
+      "source": "mech:unemployment_high",
+      "target": "asset:ust2y",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 2,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 2
+      },
+      "evidence": [
+        {
+          "title": "UPDATE 3-Canadian unemployment rate hits 1-1/2-year high ahead of election",
+          "date": "2015-10-10 12:45:00 UTC",
+          "url": "http://www.reuters.com/article/canada-economy-jobs-idUSL1N1282WO20151009",
+          "pattern": "general_context"
+        },
+        {
+          "title": "UPDATE 1-Canada sheds 5,700 jobs, unemployment rate hits 2-year high",
+          "date": "2016-02-06 08:34:00 UTC",
+          "url": "http://www.reuters.com/article/canada-economy-employment-idUSL2N15J2DK",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e197",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:nikkei",
@@ -11923,10 +12002,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e196",
+      "id": "edge:e198",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:emerging_markets",
@@ -11958,10 +12037,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e197",
+      "id": "edge:e199",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:ftse",
@@ -11993,10 +12072,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e198",
+      "id": "edge:e200",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:nikkei",
@@ -12021,10 +12100,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e199",
+      "id": "edge:e201",
       "type": "Causal",
       "source": "mech:unemployment_high",
       "target": "asset:mexico_stocks",
@@ -12055,10 +12134,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e200",
+      "id": "edge:e202",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:yen",
@@ -12132,10 +12211,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e201",
+      "id": "edge:e203",
       "type": "Causal",
       "source": "mech:dovish_repricing",
       "target": "asset:bonds",
@@ -12161,10 +12240,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e202",
+      "id": "edge:e204",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:ust10y",
@@ -12183,10 +12262,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e203",
+      "id": "edge:e205",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:mexico_stocks",
@@ -12217,10 +12296,44 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e204",
+      "id": "edge:e206",
+      "type": "Causal",
+      "source": "mech:rate_cut_bets",
+      "target": "asset:brazil_stocks",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 3,
+      "primary_pattern": "explicit_on_after",
+      "pattern_distribution": {
+        "explicit_on_after": 3
+      },
+      "evidence": [
+        {
+          "title": "Brazil stocks, currency gain on US rate cut hopes",
+          "date": "2008-01-29 14:34:00 UTC",
+          "url": "http://www.reuters.com/article/companyNews/idUSN2956794120080129",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Brazil stocks, currency rise on US rate cut hopes",
+          "date": "2007-09-04 20:41:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN0442205520070904",
+          "pattern": "explicit_on_after"
+        },
+        {
+          "title": "Brazil's real, stocks gain on Fed rate cut hope",
+          "date": "2008-02-27 22:29:00 UTC",
+          "url": "http://www.reuters.com/article/companyNews/idUSN2748254920080227",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e207",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:currencies",
@@ -12295,44 +12408,10 @@
           "pattern": "event_causes_asset"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e205",
-      "type": "Causal",
-      "source": "mech:rate_cut_bets",
-      "target": "asset:brazil_stocks",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 3,
-      "primary_pattern": "explicit_on_after",
-      "pattern_distribution": {
-        "explicit_on_after": 3
-      },
-      "evidence": [
-        {
-          "title": "Brazil stocks, currency gain on US rate cut hopes",
-          "date": "2008-01-29 14:34:00 UTC",
-          "url": "http://www.reuters.com/article/companyNews/idUSN2956794120080129",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Brazil stocks, currency rise on US rate cut hopes",
-          "date": "2007-09-04 20:41:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN0442205520070904",
-          "pattern": "explicit_on_after"
-        },
-        {
-          "title": "Brazil's real, stocks gain on Fed rate cut hope",
-          "date": "2008-02-27 22:29:00 UTC",
-          "url": "http://www.reuters.com/article/companyNews/idUSN2748254920080227",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e206",
+      "id": "edge:e208",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:mexico_stocks",
@@ -12388,10 +12467,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e207",
+      "id": "edge:e209",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:peso",
@@ -12453,10 +12532,32 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e208",
+      "id": "edge:e210",
+      "type": "Causal",
+      "source": "mech:hawkish_repricing",
+      "target": "asset:nikkei",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "Nikkei drops as strong U.S. jobs report stokes concerns about Fed rate hike",
+          "date": "2015-03-09 22:05:00 UTC",
+          "url": "http://www.reuters.com/article/2015/03/09/markets-japan-stocks-idUSL4N0WB1AN20150309",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e211",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:nikkei",
@@ -12530,32 +12631,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e209",
-      "type": "Causal",
-      "source": "mech:hawkish_repricing",
-      "target": "asset:nikkei",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "Nikkei drops as strong U.S. jobs report stokes concerns about Fed rate hike",
-          "date": "2015-03-09 22:05:00 UTC",
-          "url": "http://www.reuters.com/article/2015/03/09/markets-japan-stocks-idUSL4N0WB1AN20150309",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e210",
+      "id": "edge:e212",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:ftse",
@@ -12611,10 +12690,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e211",
+      "id": "edge:e213",
       "type": "Causal",
       "source": "mech:tight_labor_market",
       "target": "asset:dollar",
@@ -12633,32 +12712,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e212",
-      "type": "Causal",
-      "source": "mech:hawkish_repricing",
-      "target": "asset:currencies",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "event_causes_asset",
-      "pattern_distribution": {
-        "event_causes_asset": 1
-      },
-      "evidence": [
-        {
-          "title": "REFILE-FOREX-Dollar shines as jobs report supports case for Fed hike in Sept",
-          "date": "2015-06-08 20:29:00 UTC",
-          "url": "http://www.reuters.com/article/2015/06/08/markets-forex-idUSL3N0YT0PU20150608",
-          "pattern": "event_causes_asset"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e213",
+      "id": "edge:e214",
       "type": "Causal",
       "source": "mech:hawkish_repricing",
       "target": "asset:dollar",
@@ -12690,10 +12747,32 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e214",
+      "id": "edge:e215",
+      "type": "Causal",
+      "source": "mech:hawkish_repricing",
+      "target": "asset:currencies",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "event_causes_asset",
+      "pattern_distribution": {
+        "event_causes_asset": 1
+      },
+      "evidence": [
+        {
+          "title": "REFILE-FOREX-Dollar shines as jobs report supports case for Fed hike in Sept",
+          "date": "2015-06-08 20:29:00 UTC",
+          "url": "http://www.reuters.com/article/2015/06/08/markets-forex-idUSL3N0YT0PU20150608",
+          "pattern": "event_causes_asset"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e216",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:pound",
@@ -12737,10 +12816,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e215",
+      "id": "edge:e217",
       "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:bonds",
@@ -12759,10 +12838,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e216",
+      "id": "edge:e218",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:ust30y",
@@ -12800,10 +12879,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e217",
+      "id": "edge:e219",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:ftse",
@@ -12840,10 +12919,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e218",
+      "id": "edge:e220",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:hk_stocks",
@@ -12862,10 +12941,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e219",
+      "id": "edge:e221",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:real",
@@ -12884,10 +12963,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e220",
+      "id": "edge:e222",
       "type": "Causal",
       "source": "mech:dovish_repricing",
       "target": "asset:stocks",
@@ -12912,10 +12991,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e221",
+      "id": "edge:e223",
       "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:mexico_stocks",
@@ -12941,10 +13020,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e222",
+      "id": "edge:e224",
       "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:peso",
@@ -12963,10 +13042,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e223",
+      "id": "edge:e225",
       "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:stocks",
@@ -12998,10 +13077,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e224",
+      "id": "edge:e226",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:europe_stocks",
@@ -13020,84 +13099,11 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e225",
-      "type": "Causal",
-      "source": "mech:dovish_repricing",
-      "target": "asset:currencies",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
-          "date": "2007-05-28 05:34:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e226",
-      "type": "Causal",
-      "source": "mech:rate_cut_fears",
-      "target": "asset:currencies",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 2,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1,
-        "explicit_on_after": 1
-      },
-      "evidence": [
-        {
-          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
-          "date": "2007-05-28 05:34:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
-          "pattern": "general_context"
-        },
-        {
-          "title": "FOREX-Dollar recovers from lows amid US rate cut doubts",
-          "date": "2007-10-30 13:13:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN3032398820071030",
-          "pattern": "explicit_on_after"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e227",
       "type": "Causal",
-      "source": "mech:dovish_repricing",
-      "target": "asset:dollar",
-      "relation": "POSITIVELY_IMPACTS",
-      "polarity": "positive",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
-          "date": "2007-05-28 05:34:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e228",
-      "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:dollar",
       "relation": "POSITIVELY_IMPACTS",
@@ -13122,10 +13128,83 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e228",
+      "type": "Causal",
+      "source": "mech:dovish_repricing",
+      "target": "asset:dollar",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
+          "date": "2007-05-28 05:34:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e229",
+      "type": "Causal",
+      "source": "mech:rate_cut_fears",
+      "target": "asset:currencies",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 2,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1,
+        "explicit_on_after": 1
+      },
+      "evidence": [
+        {
+          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
+          "date": "2007-05-28 05:34:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
+          "pattern": "general_context"
+        },
+        {
+          "title": "FOREX-Dollar recovers from lows amid US rate cut doubts",
+          "date": "2007-10-30 13:13:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN3032398820071030",
+          "pattern": "explicit_on_after"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e230",
+      "type": "Causal",
+      "source": "mech:dovish_repricing",
+      "target": "asset:currencies",
+      "relation": "POSITIVELY_IMPACTS",
+      "polarity": "positive",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "FOREX-Dollar supported as Fed rate cut concerns subside",
+          "date": "2007-05-28 05:34:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUST29596520070528",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e231",
       "type": "Causal",
       "source": "mech:rate_cut_fears",
       "target": "asset:europe_stocks",
@@ -13144,10 +13223,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e230",
+      "id": "edge:e232",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:aussie",
@@ -13166,10 +13245,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e231",
+      "id": "edge:e233",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:sp500",
@@ -13188,10 +13267,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e232",
+      "id": "edge:e234",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:nasdaq",
@@ -13210,10 +13289,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e233",
+      "id": "edge:e235",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:asia_stocks",
@@ -13238,10 +13317,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e234",
+      "id": "edge:e236",
       "type": "Causal",
       "source": "mech:hawkish_repricing",
       "target": "asset:yields",
@@ -13266,10 +13345,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e235",
+      "id": "edge:e237",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:peso",
@@ -13294,58 +13373,7 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e236",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:mexico_stocks",
-      "relation": "INDIRECTLY_AFFECTS",
-      "polarity": "neutral",
-      "evidence_count": 1,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1
-      },
-      "evidence": [
-        {
-          "title": "LATAM WEEKAHEAD-Mexico, Brazil unemployment data in focus",
-          "date": "2009-03-22 19:35:00 UTC",
-          "url": "http://www.reuters.com/article/usDollarRpt/idUSN2252391520090322",
-          "pattern": "general_context"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
-    },
-    {
-      "id": "edge:e237",
-      "type": "Causal",
-      "source": "mech:ahead_of_jobs_report",
-      "target": "asset:emerging_markets",
-      "relation": "NEGATIVELY_IMPACTS",
-      "polarity": "negative",
-      "evidence_count": 2,
-      "primary_pattern": "general_context",
-      "pattern_distribution": {
-        "general_context": 1,
-        "movement_before": 1
-      },
-      "evidence": [
-        {
-          "title": "LATAM WEEKAHEAD-Mexico, Brazil unemployment data in focus",
-          "date": "2009-03-22 19:35:00 UTC",
-          "url": "http://www.reuters.com/article/usDollarRpt/idUSN2252391520090322",
-          "pattern": "general_context"
-        },
-        {
-          "title": "Emerging Markets-Prices drop ahead of US jobs report",
-          "date": "2009-01-08 21:10:00 UTC",
-          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN0853147120090108",
-          "pattern": "movement_before"
-        }
-      ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e238",
@@ -13374,10 +13402,61 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
       "id": "edge:e239",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:mexico_stocks",
+      "relation": "INDIRECTLY_AFFECTS",
+      "polarity": "neutral",
+      "evidence_count": 1,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1
+      },
+      "evidence": [
+        {
+          "title": "LATAM WEEKAHEAD-Mexico, Brazil unemployment data in focus",
+          "date": "2009-03-22 19:35:00 UTC",
+          "url": "http://www.reuters.com/article/usDollarRpt/idUSN2252391520090322",
+          "pattern": "general_context"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e240",
+      "type": "Causal",
+      "source": "mech:ahead_of_jobs_report",
+      "target": "asset:emerging_markets",
+      "relation": "NEGATIVELY_IMPACTS",
+      "polarity": "negative",
+      "evidence_count": 2,
+      "primary_pattern": "general_context",
+      "pattern_distribution": {
+        "general_context": 1,
+        "movement_before": 1
+      },
+      "evidence": [
+        {
+          "title": "LATAM WEEKAHEAD-Mexico, Brazil unemployment data in focus",
+          "date": "2009-03-22 19:35:00 UTC",
+          "url": "http://www.reuters.com/article/usDollarRpt/idUSN2252391520090322",
+          "pattern": "general_context"
+        },
+        {
+          "title": "Emerging Markets-Prices drop ahead of US jobs report",
+          "date": "2009-01-08 21:10:00 UTC",
+          "url": "http://www.reuters.com/article/companyNewsAndPR/idUSN0853147120090108",
+          "pattern": "movement_before"
+        }
+      ],
+      "last_updated": "2025-11-24T17:13:16.642658Z"
+    },
+    {
+      "id": "edge:e241",
       "type": "Causal",
       "source": "mech:rate_cut_bets",
       "target": "asset:copper",
@@ -13396,10 +13475,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e240",
+      "id": "edge:e242",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:mexico_stocks",
@@ -13418,10 +13497,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e241",
+      "id": "edge:e243",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:gasoline",
@@ -13440,10 +13519,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e242",
+      "id": "edge:e244",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:crude",
@@ -13462,10 +13541,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e243",
+      "id": "edge:e245",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:ust30y",
@@ -13490,10 +13569,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e244",
+      "id": "edge:e246",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:copper",
@@ -13537,10 +13616,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e245",
+      "id": "edge:e247",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:krona",
@@ -13559,10 +13638,10 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e246",
+      "id": "edge:e248",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:ust10y",
@@ -13581,10 +13660,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e247",
+      "id": "edge:e249",
       "type": "Causal",
       "source": "mech:unemployment_high",
       "target": "asset:bonds",
@@ -13603,10 +13682,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e248",
+      "id": "edge:e250",
       "type": "Causal",
       "source": "mech:unemployment_low",
       "target": "asset:real",
@@ -13625,10 +13704,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e249",
+      "id": "edge:e251",
       "type": "Causal",
       "source": "mech:wage_pressure",
       "target": "asset:brazil_stocks",
@@ -13647,10 +13726,10 @@
           "pattern": "general_context"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e250",
+      "id": "edge:e252",
       "type": "Causal",
       "source": "mech:after_jobs_report",
       "target": "asset:franc",
@@ -13669,10 +13748,10 @@
           "pattern": "explicit_on_after"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     },
     {
-      "id": "edge:e251",
+      "id": "edge:e253",
       "type": "Causal",
       "source": "mech:ahead_of_jobs_report",
       "target": "asset:real",
@@ -13691,7 +13770,7 @@
           "pattern": "movement_before"
         }
       ],
-      "last_updated": "2025-11-19T09:05:31.315793Z"
+      "last_updated": "2025-11-24T17:13:16.642658Z"
     }
   ]
 }
