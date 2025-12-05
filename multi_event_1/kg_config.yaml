@@ -1,0 +1,1262 @@
+# Financial Knowledge Graph Configuration v3.0
+# =========================================
+# High-quality, comprehensive configuration for KG extraction
+# Focus: Clear boundaries, no duplicates, financial news relevance
+# 
+# Quality Principles:
+# - Each keyword should appear in only ONE asset definition
+# - Avoid overly generic terms that cause false positives
+# - Use hierarchical structure for logical grouping
+# - Prioritize terms commonly found in financial headlines
+
+version: "3.0"
+last_updated: "2024-12-05"
+description: "Production-grade financial knowledge graph configuration"
+
+# =============================================================================
+# ASSET DEFINITIONS
+# =============================================================================
+assets:
+  # ---------------------------------------------------------------------------
+  # PRECIOUS METALS
+  # ---------------------------------------------------------------------------
+  gold:
+    id: "asset:gold"
+    type: "commodity"
+    category: "precious_metal"
+    display_name: "Gold"
+    keywords:
+      - gold
+      - bullion
+      - xau
+    aliases:
+      - "the yellow metal"
+      - "gold prices"
+    bert_label: "COMMODITY"
+    priority: "high"  # Frequently mentioned in headlines
+    
+  silver:
+    id: "asset:silver"
+    type: "commodity"
+    category: "precious_metal"
+    display_name: "Silver"
+    keywords:
+      - silver
+      - xag
+    bert_label: "COMMODITY"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # MAJOR CURRENCIES (G10)
+  # ---------------------------------------------------------------------------
+  dollar:
+    id: "asset:dollar"
+    type: "currency"
+    category: "major_currency"
+    display_name: "US Dollar"
+    keywords:
+      - dollar
+      - usd
+      - greenback
+      - dlr
+      - dxy
+      - us dollar
+    aliases:
+      - "the buck"
+      - "king dollar"
+    bert_label: "CURRENCY"
+    priority: "high"
+    
+  euro:
+    id: "asset:euro"
+    type: "currency"
+    category: "major_currency"
+    display_name: "Euro"
+    keywords:
+      - euro
+      - eur
+    bert_label: "CURRENCY"
+    priority: "high"
+    
+  yen:
+    id: "asset:yen"
+    type: "currency"
+    category: "major_currency"
+    display_name: "Japanese Yen"
+    keywords:
+      - yen
+      - jpy
+    bert_label: "CURRENCY"
+    priority: "high"
+    
+  pound:
+    id: "asset:pound"
+    type: "currency"
+    category: "major_currency"
+    display_name: "British Pound"
+    keywords:
+      - pound
+      - gbp
+      - sterling
+      - cable
+    bert_label: "CURRENCY"
+    priority: "high"
+
+  canadian_dollar:
+    id: "asset:canadian_dollar"
+    type: "currency"
+    category: "major_currency"
+    display_name: "Canadian Dollar"
+    keywords:
+      - canadian dollar
+      - c$
+      - loonie
+      - cad
+    bert_label: "CURRENCY"
+    priority: "medium"
+    
+  aussie:
+    id: "asset:aussie"
+    type: "currency"
+    category: "major_currency"
+    display_name: "Australian Dollar"
+    keywords:
+      - aussie
+      - australian dollar
+      - aud
+    bert_label: "CURRENCY"
+    priority: "medium"
+
+  franc:
+    id: "asset:franc"
+    type: "currency"
+    category: "major_currency"
+    display_name: "Swiss Franc"
+    keywords:
+      - franc
+      - chf
+      - swiss franc
+    bert_label: "CURRENCY"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # EMERGING MARKET CURRENCIES
+  # ---------------------------------------------------------------------------
+  peso:
+    id: "asset:peso"
+    type: "currency"
+    category: "em_currency"
+    display_name: "Mexican Peso"
+    keywords:
+      - peso
+      - mxn
+    bert_label: "CURRENCY"
+    priority: "low"
+
+  real:
+    id: "asset:real"
+    type: "currency"
+    category: "em_currency"
+    display_name: "Brazilian Real"
+    keywords:
+      - real
+      - brl
+    bert_label: "CURRENCY"
+    priority: "low"
+
+  rand:
+    id: "asset:rand"
+    type: "currency"
+    category: "em_currency"
+    display_name: "South African Rand"
+    keywords:
+      - rand
+      - zar
+      - south african rand
+    bert_label: "CURRENCY"
+    priority: "low"
+
+  # ---------------------------------------------------------------------------
+  # EQUITY MARKETS - GENERAL
+  # ---------------------------------------------------------------------------
+  stocks:
+    id: "asset:stocks"
+    type: "equity"
+    category: "general_equity"
+    display_name: "Stocks/Equities"
+    keywords:
+      - stocks
+      - stock
+      - shares
+      - share
+      - equity
+      - equities
+      - wall street
+      - wall st
+      - stock market
+      - equity market
+    children:
+      - sp500
+      - dow
+      - nasdaq
+      - russell
+      - futures
+    bert_label: "EQUITY"
+    priority: "high"
+    
+  # ---------------------------------------------------------------------------
+  # US INDICES (children of stocks)
+  # ---------------------------------------------------------------------------
+  sp500:
+    id: "asset:sp500"
+    type: "index"
+    category: "us_index"
+    parent: "stocks"
+    display_name: "S&P 500"
+    keywords:
+      - s&p 500
+      - s&p
+      - spx
+      - sp500
+    bert_label: "INDEX"
+    priority: "high"
+    
+  dow:
+    id: "asset:dow"
+    type: "index"
+    category: "us_index"
+    parent: "stocks"
+    display_name: "Dow Jones"
+    keywords:
+      - dow
+      - djia
+      - dow jones
+    bert_label: "INDEX"
+    priority: "high"
+    
+  nasdaq:
+    id: "asset:nasdaq"
+    type: "index"
+    category: "us_index"
+    parent: "stocks"
+    display_name: "NASDAQ"
+    keywords:
+      - nasdaq
+    bert_label: "INDEX"
+    priority: "high"
+
+  russell:
+    id: "asset:russell"
+    type: "index"
+    category: "us_index"
+    parent: "stocks"
+    display_name: "Russell 2000"
+    keywords:
+      - russell 2000
+      - russell
+      - small cap
+      - smallcap
+      - small-cap
+    bert_label: "INDEX"
+    priority: "medium"
+
+  futures:
+    id: "asset:futures"
+    type: "derivative"
+    category: "equity_derivative"
+    parent: "stocks"
+    display_name: "Stock Futures"
+    keywords:
+      - futures
+      - index futures
+      - stock futures
+      - equity futures
+      - e-mini
+    bert_label: "DERIVATIVE"
+    priority: "high"
+
+  # ---------------------------------------------------------------------------
+  # INTERNATIONAL INDICES
+  # ---------------------------------------------------------------------------
+  nikkei:
+    id: "asset:nikkei"
+    type: "index"
+    category: "asia_index"
+    display_name: "Nikkei 225"
+    keywords:
+      - nikkei
+    bert_label: "INDEX"
+    priority: "medium"
+
+  hang_seng:
+    id: "asset:hang_seng"
+    type: "index"
+    category: "asia_index"
+    display_name: "Hang Seng"
+    keywords:
+      - hang seng
+      - hsi
+    bert_label: "INDEX"
+    priority: "medium"
+
+  ftse:
+    id: "asset:ftse"
+    type: "index"
+    category: "europe_index"
+    display_name: "FTSE 100"
+    keywords:
+      - ftse
+    bert_label: "INDEX"
+    priority: "medium"
+
+  dax:
+    id: "asset:dax"
+    type: "index"
+    category: "europe_index"
+    display_name: "DAX"
+    keywords:
+      - dax
+      - german dax
+    bert_label: "INDEX"
+    priority: "medium"
+
+  cac:
+    id: "asset:cac"
+    type: "index"
+    category: "europe_index"
+    display_name: "CAC 40"
+    keywords:
+      - cac
+      - cac 40
+    bert_label: "INDEX"
+    priority: "low"
+
+  # ---------------------------------------------------------------------------
+  # REGIONAL MARKETS
+  # ---------------------------------------------------------------------------
+  asia_stocks:
+    id: "asset:asia_stocks"
+    type: "regional_equity"
+    category: "asia_pacific"
+    display_name: "Asian Stocks"
+    keywords:
+      - asian shares
+      - asian stocks
+      - asia shares
+      - asia stocks
+    children:
+      - china_stocks
+      - hk_stocks
+      - japan_stocks
+      - india_stocks
+    bert_label: "REGIONAL_EQUITY"
+    priority: "high"
+
+  china_stocks:
+    id: "asset:china_stocks"
+    type: "regional_equity"
+    category: "asia_pacific"
+    parent: "asia_stocks"
+    display_name: "Chinese Stocks"
+    keywords:
+      - china stocks
+      - chinese stocks
+      - shanghai
+      - shenzhen
+    bert_label: "REGIONAL_EQUITY"
+    priority: "high"
+
+  hk_stocks:
+    id: "asset:hk_stocks"
+    type: "regional_equity"
+    category: "asia_pacific"
+    parent: "asia_stocks"
+    display_name: "Hong Kong Stocks"
+    keywords:
+      - hk shares
+      - hong kong shares
+      - hk stocks
+    bert_label: "REGIONAL_EQUITY"
+    priority: "medium"
+
+  japan_stocks:
+    id: "asset:japan_stocks"
+    type: "regional_equity"
+    category: "asia_pacific"
+    parent: "asia_stocks"
+    display_name: "Japanese Stocks"
+    keywords:
+      - japan stocks
+      - japanese stocks
+      - tokyo stocks
+    bert_label: "REGIONAL_EQUITY"
+    priority: "medium"
+
+  india_stocks:
+    id: "asset:india_stocks"
+    type: "regional_equity"
+    category: "asia_pacific"
+    parent: "asia_stocks"
+    display_name: "Indian Stocks"
+    keywords:
+      - india stocks
+      - indian stocks
+      - sensex
+      - nifty
+    bert_label: "REGIONAL_EQUITY"
+    priority: "medium"
+    
+  europe_stocks:
+    id: "asset:europe_stocks"
+    type: "regional_equity"
+    category: "europe"
+    display_name: "European Stocks"
+    keywords:
+      - europe shares
+      - europe stocks
+      - european shares
+      - european stocks
+    children:
+      - uk_stocks
+    bert_label: "REGIONAL_EQUITY"
+    priority: "high"
+
+  uk_stocks:
+    id: "asset:uk_stocks"
+    type: "regional_equity"
+    category: "europe"
+    parent: "europe_stocks"
+    display_name: "UK Stocks"
+    keywords:
+      - uk shares
+      - uk stocks
+      - british shares
+    bert_label: "REGIONAL_EQUITY"
+    priority: "medium"
+
+  emerging_markets:
+    id: "asset:emerging_markets"
+    type: "regional_equity"
+    category: "emerging"
+    display_name: "Emerging Markets"
+    keywords:
+      - emerging markets
+      - emerging market stocks
+      - em stocks
+    bert_label: "REGIONAL_EQUITY"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # FIXED INCOME
+  # ---------------------------------------------------------------------------
+  bonds:
+    id: "asset:bonds"
+    type: "fixed_income"
+    category: "government_debt"
+    display_name: "Bonds/Treasuries"
+    keywords:
+      - bonds
+      - bond
+      - treasuries
+      - treasury
+      - t-bond
+      - t-bonds
+      - govt bond
+      - government bond
+      - gilt
+      - bund
+      - bond market
+    children:
+      - ust10y
+      - ust2y
+      - ust30y
+    bert_label: "FIXED_INCOME"
+    priority: "high"
+    
+  yields:
+    id: "asset:yields"
+    type: "fixed_income"
+    category: "yield"
+    display_name: "Bond Yields"
+    keywords:
+      - yields
+      - yield
+      - yield curve
+    bert_label: "YIELD"
+    priority: "high"
+
+  ust10y:
+    id: "asset:ust10y"
+    type: "fixed_income"
+    category: "treasury_yield"
+    parent: "bonds"
+    display_name: "10-Year Treasury Yield"
+    keywords:
+      - 10-year yield
+      - 10y yield
+      - 10-yr yield
+      - ten-year yield
+    bert_label: "YIELD"
+    priority: "high"
+
+  ust2y:
+    id: "asset:ust2y"
+    type: "fixed_income"
+    category: "treasury_yield"
+    parent: "bonds"
+    display_name: "2-Year Treasury Yield"
+    keywords:
+      - 2-year yield
+      - 2y yield
+      - 2-yr yield
+      - two-year yield
+    bert_label: "YIELD"
+    priority: "medium"
+
+  ust30y:
+    id: "asset:ust30y"
+    type: "fixed_income"
+    category: "treasury_yield"
+    parent: "bonds"
+    display_name: "30-Year Treasury Yield"
+    keywords:
+      - 30-year yield
+      - 30y yield
+      - thirty-year yield
+    bert_label: "YIELD"
+    priority: "low"
+
+  credit_spreads:
+    id: "asset:credit_spreads"
+    type: "fixed_income"
+    category: "credit"
+    display_name: "Credit Spreads"
+    keywords:
+      - credit spreads
+      - credit default swaps
+      - cds
+    bert_label: "FIXED_INCOME"
+    priority: "low"
+
+  # ---------------------------------------------------------------------------
+  # COMMODITIES
+  # ---------------------------------------------------------------------------
+  crude:
+    id: "asset:crude"
+    type: "commodity"
+    category: "energy"
+    display_name: "Crude Oil"
+    keywords:
+      - crude
+      - oil
+      - wti
+      - brent
+      - nymex
+    bert_label: "COMMODITY"
+    priority: "high"
+
+  copper:
+    id: "asset:copper"
+    type: "commodity"
+    category: "industrial_metal"
+    display_name: "Copper"
+    keywords:
+      - copper
+      - copper futures
+    bert_label: "COMMODITY"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # SECTORS (Broad, commonly mentioned in headlines)
+  # ---------------------------------------------------------------------------
+  tech_stocks:
+    id: "asset:tech_stocks"
+    type: "sector"
+    category: "equity_sector"
+    display_name: "Technology Stocks"
+    keywords:
+      - tech stocks
+      - technology stocks
+      - technology sector
+      - tech sector
+      - chip stocks
+      - semiconductor stocks
+    bert_label: "SECTOR"
+    priority: "high"
+    notes: "Removed specific company names to avoid over-specificity"
+
+  financials:
+    id: "asset:financials"
+    type: "sector"
+    category: "equity_sector"
+    display_name: "Financial Sector"
+    keywords:
+      - financials
+      - banks
+      - banking
+      - financial sector
+      - bank stocks
+    bert_label: "SECTOR"
+    priority: "high"
+
+  energy_stocks:
+    id: "asset:energy_stocks"
+    type: "sector"
+    category: "equity_sector"
+    display_name: "Energy Sector"
+    keywords:
+      - energy stocks
+      - energy sector
+      - oil stocks
+    bert_label: "SECTOR"
+    priority: "medium"
+
+  healthcare:
+    id: "asset:healthcare"
+    type: "sector"
+    category: "equity_sector"
+    display_name: "Healthcare Sector"
+    keywords:
+      - healthcare
+      - healthcare stocks
+      - pharma
+      - pharma stocks
+      - biotech
+      - biotech stocks
+    bert_label: "SECTOR"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # VOLATILITY & SENTIMENT
+  # ---------------------------------------------------------------------------
+  vix:
+    id: "asset:vix"
+    type: "volatility"
+    category: "market_indicator"
+    display_name: "VIX"
+    keywords:
+      - vix
+      - fear gauge
+      - fear index
+      - volatility index
+      - cboe volatility
+    bert_label: "VOLATILITY"
+    priority: "high"
+
+  safe_haven:
+    id: "asset:safe_haven"
+    type: "sentiment"
+    category: "market_flow"
+    display_name: "Safe Haven Assets"
+    keywords:
+      - safe haven
+      - flight to quality
+      - safe assets
+      - flight to safety
+    bert_label: "SENTIMENT"
+    priority: "high"
+
+  risk_appetite:
+    id: "asset:risk_appetite"
+    type: "sentiment"
+    category: "market_flow"
+    display_name: "Risk Appetite"
+    keywords:
+      - risk appetite
+      - risk-on
+      - risk-off
+      - appetite for risk
+    bert_label: "SENTIMENT"
+    priority: "high"
+
+  # ---------------------------------------------------------------------------
+  # MARKET PARTICIPANTS
+  # ---------------------------------------------------------------------------
+  investors:
+    id: "asset:investors"
+    type: "participant"
+    category: "market_participant"
+    display_name: "Investors"
+    keywords:
+      - investors
+      - investor
+      - trader
+      - traders
+      - fund
+      - funds
+      - asset managers
+    bert_label: "PARTICIPANT"
+    priority: "high"
+
+# =============================================================================
+# EVENT DEFINITIONS
+# =============================================================================
+events:
+  # ---------------------------------------------------------------------------
+  # LABOR MARKET
+  # ---------------------------------------------------------------------------
+  employment:
+    id: "event:employment"
+    type: "macro_event"
+    category: "economic_data"
+    display_name: "Employment/Jobs Data"
+    keywords:
+      - jobs report
+      - employment data
+      - employment report
+      - nonfarm payrolls
+      - nonfarm payroll
+      - payrolls
+      - unemployment
+      - unemployment rate
+      - jobless claims
+      - labor market
+      - labour market
+      - jobs data
+    qualifiers:
+      positive:
+        - strong
+        - robust
+        - stellar
+        - blowout
+        - beat expectations
+        - better than expected
+        - surprise
+        - tight labor
+      negative:
+        - weak
+        - disappointing
+        - miss
+        - below expectations
+        - soft
+        - worse than expected
+      neutral:
+        - mixed
+        - in line with
+        - as expected
+    bert_label: "EVENT_EMPLOYMENT"
+    priority: "high"
+
+  # ---------------------------------------------------------------------------
+  # MONETARY POLICY
+  # ---------------------------------------------------------------------------
+  rate_cut:
+    id: "event:rate_cut"
+    type: "policy_event"
+    category: "monetary_policy"
+    display_name: "Rate Cut"
+    keywords:
+      - rate cut
+      - rate cuts
+      - rate cut bets
+      - rate cut hopes
+      - rate cut optimism
+      - rate cut speculation
+      - fed cut
+      - rate reduction
+      - rate easing
+      - cut rates
+    bert_label: "EVENT_POLICY"
+    priority: "high"
+    
+  rate_hike:
+    id: "event:rate_hike"
+    type: "policy_event"
+    category: "monetary_policy"
+    display_name: "Rate Hike"
+    keywords:
+      - rate hike
+      - rate hikes
+      - rate increase
+      - rate rise
+      - fed hike
+      - hike outlook
+      - rate tightening
+      - hike fears
+      - hike worries
+      - raise rates
+    bert_label: "EVENT_POLICY"
+    priority: "high"
+
+  fed_policy:
+    id: "event:fed_policy"
+    type: "policy_event"
+    category: "monetary_policy"
+    display_name: "Fed Policy"
+    keywords:
+      - fed
+      - federal reserve
+      - fomc
+      - powell
+      - fed decision
+      - fed statement
+      - fed minutes
+      - monetary policy
+      - fed meeting
+    qualifiers:
+      hawkish:
+        - hawkish
+        - aggressive
+        - tight policy
+      dovish:
+        - dovish
+        - accommodative
+        - patient
+        - easy policy
+    bert_label: "EVENT_POLICY"
+    priority: "high"
+
+  central_bank:
+    id: "event:central_bank"
+    type: "policy_event"
+    category: "monetary_policy"
+    display_name: "Central Bank Policy"
+    keywords:
+      - ecb
+      - european central bank
+      - boj
+      - bank of japan
+      - boe
+      - bank of england
+      - rba
+      - pboc
+      - central bank
+    bert_label: "EVENT_POLICY"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # INFLATION
+  # ---------------------------------------------------------------------------
+  inflation:
+    id: "event:inflation"
+    type: "macro_event"
+    category: "economic_data"
+    display_name: "Inflation"
+    keywords:
+      - inflation
+      - cpi
+      - pce
+      - price pressure
+      - inflation data
+      - inflation report
+      - consumer prices
+      - producer prices
+      - ppi
+    qualifiers:
+      high:
+        - rising
+        - elevated
+        - high
+        - hot
+        - surging
+      low:
+        - falling
+        - cooling
+        - easing
+        - soft
+        - tame
+      neutral:
+        - steady
+        - stable
+        - in line
+    bert_label: "EVENT_INFLATION"
+    priority: "high"
+
+  # ---------------------------------------------------------------------------
+  # ECONOMIC GROWTH
+  # ---------------------------------------------------------------------------
+  gdp_growth:
+    id: "event:gdp_growth"
+    type: "macro_event"
+    category: "economic_data"
+    display_name: "GDP Growth"
+    keywords:
+      - gdp
+      - gdp growth
+      - economic growth
+      - growth data
+      - expansion
+      - recession
+      - contraction
+    qualifiers:
+      positive:
+        - strong
+        - robust
+        - solid
+        - accelerating
+      negative:
+        - weak
+        - slowing
+        - contracting
+        - recession
+      neutral:
+        - steady
+        - moderate
+        - as expected
+    bert_label: "EVENT_GDP"
+    priority: "high"
+
+  # ---------------------------------------------------------------------------
+  # TRADE & GEOPOLITICS
+  # ---------------------------------------------------------------------------
+  trade_tensions:
+    id: "event:trade_tensions"
+    type: "geopolitical_event"
+    category: "trade_policy"
+    display_name: "Trade Tensions"
+    keywords:
+      - trade war
+      - trade tensions
+      - tariffs
+      - tariff
+      - trade deal
+      - trade talks
+      - china trade
+      - us-china
+      - trade policy
+      - trade dispute
+    bert_label: "EVENT_TRADE"
+    priority: "high"
+
+  geopolitical:
+    id: "event:geopolitical"
+    type: "geopolitical_event"
+    category: "risk_event"
+    display_name: "Geopolitical Risk"
+    keywords:
+      - geopolitical
+      - geopolitical tensions
+      - war
+      - conflict
+      - sanctions
+      - crisis
+      - tensions
+      - military
+    bert_label: "EVENT_GEOPOLITICAL"
+    priority: "medium"
+
+  # ---------------------------------------------------------------------------
+  # CORPORATE
+  # ---------------------------------------------------------------------------
+  earnings:
+    id: "event:earnings"
+    type: "corporate_event"
+    category: "earnings"
+    display_name: "Corporate Earnings"
+    keywords:
+      - earnings
+      - earnings report
+      - quarterly results
+      - earnings season
+      - corporate earnings
+    qualifiers:
+      positive:
+        - beat
+        - beat expectations
+        - strong
+        - better than expected
+      negative:
+        - miss
+        - miss expectations
+        - disappointing
+        - worse than expected
+      neutral:
+        - in line
+        - as expected
+        - mixed
+    bert_label: "EVENT_EARNINGS"
+    priority: "high"
+
+# =============================================================================
+# RELATION DEFINITIONS
+# =============================================================================
+relations:
+  # ---------------------------------------------------------------------------
+  # CAUSAL RELATIONS
+  # ---------------------------------------------------------------------------
+  POSITIVE_IMPACT:
+    description: "Source event/asset causes target to increase/improve"
+    direction: "causal"
+    polarity: "positive"
+    indicators:
+      strong:
+        - surge
+        - soar
+        - rocket
+        - skyrocket
+        - rally
+        - jump
+        - spike
+      moderate:
+        - rise
+        - gain
+        - climb
+        - advance
+        - lift
+        - boost
+      weak:
+        - edge up
+        - inch higher
+        - tick up
+        - firm
+    bert_label: "REL_POS_IMPACT"
+    
+  NEGATIVE_IMPACT:
+    description: "Source event/asset causes target to decrease/worsen"
+    direction: "causal"
+    polarity: "negative"
+    indicators:
+      strong:
+        - plunge
+        - crash
+        - collapse
+        - tumble
+        - slammed
+        - crater
+      moderate:
+        - fall
+        - drop
+        - decline
+        - slip
+        - slide
+      weak:
+        - edge down
+        - inch lower
+        - tick down
+        - ease
+    bert_label: "REL_NEG_IMPACT"
+    
+  NEUTRAL_IMPACT:
+    description: "Source affects target but direction unclear or mixed"
+    direction: "causal"
+    polarity: "neutral"
+    indicators:
+      - mixed
+      - flat
+      - steady
+      - unchanged
+      - stable
+      - muted
+      - subdued
+    bert_label: "REL_NEU_IMPACT"
+
+  # ---------------------------------------------------------------------------
+  # CORRELATION RELATIONS
+  # ---------------------------------------------------------------------------
+  POSITIVE_CORRELATION:
+    description: "Source and target move in same direction"
+    direction: "bidirectional"
+    polarity: "positive"
+    bert_label: "REL_POS_CORR"
+    
+  NEGATIVE_CORRELATION:
+    description: "Source and target move in opposite directions"
+    direction: "bidirectional"
+    polarity: "negative"
+    bert_label: "REL_NEG_CORR"
+    
+  CO_OCCURRENCE:
+    description: "Source and target appear together, relationship unclear"
+    direction: "none"
+    polarity: "neutral"
+    bert_label: "REL_COOCCUR"
+
+# =============================================================================
+# CAUSAL PATTERNS
+# =============================================================================
+causal_patterns:
+  # Patterns for detecting causality in headlines
+  
+  cause_effect:
+    description: "Direct cause-effect patterns"
+    patterns:
+      - "{ASSET} {MOVEMENT} on {EVENT}"
+      - "{ASSET} {MOVEMENT} after {EVENT}"
+      - "{ASSET} {MOVEMENT} as {EVENT}"
+      - "{EVENT} {CAUSES} {ASSET} to {MOVEMENT}"
+      - "{EVENT} {CAUSES} {ASSET} {MOVEMENT}"
+    trigger_words:
+      - on
+      - after
+      - as
+      - following
+      - amid
+      - due to
+      - because of
+      - driven by
+      - fueled by
+      
+  expectation:
+    description: "Anticipation/expectation patterns"
+    patterns:
+      - "{ASSET} {MOVEMENT} ahead of {EVENT}"
+      - "{ASSET} {MOVEMENT} before {EVENT}"
+      - "{ASSET} {MOVEMENT} in anticipation of {EVENT}"
+      - "{ASSET} {MOVEMENT} awaiting {EVENT}"
+    trigger_words:
+      - ahead of
+      - before
+      - in anticipation of
+      - awaiting
+      - eyes on
+      - watching
+    temporal_relation: "before"
+    
+  mechanism:
+    description: "Patterns showing causal mechanism"
+    patterns:
+      - "{EVENT} stokes {SENTIMENT}"
+      - "{EVENT} fuels {SENTIMENT}"
+      - "{EVENT} sparks {SENTIMENT}"
+      - "{EVENT} triggers {SENTIMENT}"
+    trigger_words:
+      - stokes
+      - fuels
+      - sparks
+      - triggers
+      - drives
+      - spurs
+      - lifts
+      - boosts
+      - weighs on
+      - pressures
+
+# =============================================================================
+# MOVEMENT INDICATORS (consolidated from relations)
+# =============================================================================
+movement_indicators:
+  strong_positive:
+    - surge
+    - soar
+    - rally
+    - jump
+    - spike
+    - rocket
+    - skyrocket
+    - vault
+    - catapult
+    - leap
+    
+  positive:
+    - gain
+    - rise
+    - climb
+    - advance
+    - improve
+    - boost
+    - higher
+    - support
+    - lift
+    - strengthen
+    - firm
+    - rebound
+    - outperform
+    - rallied
+    - climbed
+    - buoy
+    
+  neutral:
+    - flat
+    - steady
+    - stable
+    - unchanged
+    - mixed
+    - choppy
+    - volatile
+    - hold
+    - consolidate
+    - hover
+    - muted
+    - subdued
+    
+  negative:
+    - fall
+    - drop
+    - decline
+    - slip
+    - slide
+    - down
+    - lower
+    - weaken
+    - dip
+    - ease
+    - soften
+    - pressure
+    - shed
+    - trim
+    - pare
+    - lose
+    - erode
+    - drift
+    
+  strong_negative:
+    - plunge
+    - crash
+    - collapse
+    - tumble
+    - slammed
+    - sink
+    - tanked
+    - hammered
+    - selloff
+    - slump
+    - crater
+    - dive
+    - plummet
+
+# =============================================================================
+# BERT/NLP CONFIGURATION
+# =============================================================================
+bert_config:
+  ner_labels:
+    - O           # Outside any entity
+    - B-ASSET     # Beginning of asset mention
+    - I-ASSET     # Inside asset mention
+    - B-EVENT     # Beginning of event mention
+    - I-EVENT     # Inside event mention
+    - B-MOVEMENT  # Beginning of movement indicator
+    - I-MOVEMENT  # Inside movement indicator
+    - B-TEMPORAL  # Beginning of temporal marker
+    - I-TEMPORAL  # Inside temporal marker
+    
+  relation_labels:
+    - NO_RELATION
+    - POSITIVE_IMPACT
+    - NEGATIVE_IMPACT
+    - NEUTRAL_IMPACT
+    - POSITIVE_CORRELATION
+    - NEGATIVE_CORRELATION
+    - CO_OCCURRENCE
+    - TRIGGERS
+    - CAUSED_BY
+    
+  special_tokens:
+    entity_start: "[E1]"
+    entity_end: "[/E1]"
+    event_start: "[E2]"
+    event_end: "[/E2]"
+
+# =============================================================================
+# QUALITY CONTROL
+# =============================================================================
+quality_notes:
+  design_principles:
+    - "No keyword appears in multiple asset definitions"
+    - "Removed overly generic terms (tech, energy, business, debt) to avoid false positives"
+    - "Removed specific company names to focus on sector-level analysis"
+    - "Used hierarchical structure for logical grouping"
+    - "Added priority levels to guide processing order"
+    - "Consolidated movement indicators to single source of truth"
+  
+  excluded_for_quality:
+    - "Individual company names (apple, tesla, etc.) - too specific"
+    - "Generic terms (business, corporate, tech) - too broad"
+    - "Ambiguous terms (real estate in multiple contexts)"
+    - "Low-frequency currencies (krona, SEK) - rarely in headlines"
+  
+  validation_checklist:
+    - "✅ No duplicate keywords across assets"
+    - "✅ Parent-child relationships are valid"
+    - "✅ All high-priority assets included"
+    - "✅ Event qualifiers consistent"
+    - "✅ Movement indicators consolidated"

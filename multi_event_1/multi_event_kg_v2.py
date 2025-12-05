@@ -58,6 +58,19 @@ ASSET_KEYWORDS = {
     'companies': ['companies', 'company', 'firms', 'firm', 'corporate', 'corporates', 'business', 'businesses'],
     'tech_sector': ['tech', 'technology', 'apple', 'microsoft', 'google', 'amazon', 'meta', 'facebook', 'tesla', 'nvidia', 'semiconductor', 'chip'],
     
+    # Generic market proxies (Priority 1 additions)
+    'treasury': ['treasury', 'treasuries', 't-bond', 't-bonds', 'govt bond', 'government bond'],
+    'stock_market': ['stock market', 'equity market', 'equities', 'market'],
+    'risk_appetite': ['risk appetite', 'risk-seeking', 'appetite for risk', 'appetite'],
+    'safe_haven': ['safe haven', 'flight to quality', 'safe assets', 'flight to safety'],
+    
+    # NEW: Additional generic terms for better coverage
+    'market_general': ['market', 'markets', 'trading', 'bourses', 'exchanges', 'wall st', 'main street'],
+    'investors': ['investors', 'investor', 'trader', 'traders', 'fund', 'funds', 'asset managers'],
+    'shares_general': ['shares', 'share', 'stocks', 'stock'],
+    'companies': ['companies', 'company', 'firms', 'firm', 'corporate', 'corporates', 'business', 'businesses'],
+    'tech_sector': ['tech', 'technology', 'apple', 'microsoft', 'google', 'amazon', 'meta', 'facebook', 'tesla', 'nvidia', 'semiconductor', 'chip'],
+    
     # General equity markets
     'stocks': ['stocks', 'shares', 'equity', 'wall street', 'wall st'],
     'reit': ['reit', 'reits', 'real estate'],
@@ -96,7 +109,7 @@ ASSET_KEYWORDS = {
     'canada_stocks': ['canadian stocks', 'tsx'],
     
     # Fixed income
-    'bonds': ['bonds', 'treasuries', 'debt', 'treasury', 'gilt', 'bund', 'bond market'],
+    'bonds': ['bonds','bonds', 'treasuries', 'debt', 'treasury', 'gilt', 'bund', 'bond market'],
     'ust2y': ['2-year', '2y', '2-yr', 'two-year yield'],
     'ust10y': ['10-year', '10y', '10-yr', 'ten-year yield'],
     'ust30y': ['30-year', '30y', 'thirty-year yield'],
@@ -500,6 +513,277 @@ MOVEMENT_INDICATORS = {
 
 
 # ============================================================================
+# ASSET-AWARE DIRECTION EXTRACTION
+# ============================================================================
+
+import re
+
+def get_all_movement_positions(text: str) -> List[Tuple[int, int, str, str]]:
+    """
+    Find all movement indicators in text with their positions.
+    
+    Returns:
+        List of (start, end, indicator, direction) tuples
+    """
+    text_lower = text.lower()
+    movements = []
+    
+    # Order matters: check multi-word phrases first, then single words
+    direction_indicators = [
+        ('strong_positive', MOVEMENT_INDICATORS['strong_positive']),
+        ('positive', MOVEMENT_INDICATORS['positive']),
+        ('weak_positive', MOVEMENT_INDICATORS['weak_positive']),
+        ('strong_negative', MOVEMENT_INDICATORS['strong_negative']),
+        ('negative', MOVEMENT_INDICATORS['negative']),
+        ('weak_negative', MOVEMENT_INDICATORS['weak_negative']),
+        ('neutral', MOVEMENT_INDICATORS['neutral']),
+    ]
+    
+    for direction, indicators in direction_indicators:
+        # Sort by length (longest first) to match multi-word phrases first
+        sorted_indicators = sorted(indicators, key=len, reverse=True)
+        for indicator in sorted_indicators:
+            # Use word boundary matching
+            pattern = r'\b' + re.escape(indicator) + r'\b'
+            for match in re.finditer(pattern, text_lower):
+                # Normalize direction to simple positive/negative/neutral
+                if 'positive' in direction:
+                    simple_dir = 'positive'
+                elif 'negative' in direction:
+                    simple_dir = 'negative'
+                else:
+                    simple_dir = 'neutral'
+                movements.append((match.start(), match.end(), indicator, simple_dir))
+    
+    # Remove overlapping matches (keep the first/longest one)
+    movements = sorted(movements, key=lambda x: (x[0], -(x[1] - x[0])))
+    non_overlapping = []
+    last_end = -1
+    for start, end, indicator, direction in movements:
+        if start >= last_end:
+            non_overlapping.append((start, end, indicator, direction))
+            last_end = end
+    
+    return non_overlapping
+
+
+def get_asset_positions(text: str) -> Dict[str, List[Tuple[int, int]]]:
+    """
+    Find all asset mentions in text with their positions.
+    
+    Returns:
+        Dict mapping asset_id to list of (start, end) position tuples
+    """
+    text_lower = text.lower()
+    asset_positions = {}
+    
+    for asset_id, keywords in ASSET_KEYWORDS.items():
+        # Sort keywords by length (longest first) to match multi-word phrases first
+        sorted_keywords = sorted(keywords, key=len, reverse=True)
+        for keyword in sorted_keywords:
+            pattern = r'\b' + re.escape(keyword) + r"'?s?\b"  # Handle possessives
+            for match in re.finditer(pattern, text_lower):
+                if asset_id not in asset_positions:
+                    asset_positions[asset_id] = []
+                # Avoid duplicate positions for same asset
+                pos = (match.start(), match.end())
+                if pos not in asset_positions[asset_id]:
+                    asset_positions[asset_id].append(pos)
+    
+    return asset_positions
+
+
+def extract_asset_movement_pairs(text: str) -> Dict[str, str]:
+    """
+    Extract (asset, direction) pairs by analyzing text structure.
+    Handles headlines with multiple assets moving in different directions.
+    
+    IMPORTANT: This function ONLY extracts DIRECTIONS per asset.
+    Event/causality attribution is done at the HEADLINE level separately.
+    This ensures that in "Dollar Surges While Gold Retreats on Strong Jobs Data":
+    - Both Dollar and Gold will be linked to the employment event (headline-level)
+    - But Dollar gets 'positive' direction, Gold gets 'negative' direction (clause-level)
+    
+    Strategy:
+    1. First, get ALL assets mentioned anywhere in the headline
+    2. Split on conjunctions to isolate clauses for DIRECTION extraction
+    3. For each clause, find assets and their nearby movements
+    4. Use proximity matching as fallback
+    5. Ensure ALL detected assets have at least a neutral direction
+    
+    Returns:
+        Dict mapping asset_id to direction ('positive', 'negative', 'neutral')
+    """
+    text_lower = text.lower()
+    asset_movements = {}
+    
+    # First, get ALL assets mentioned anywhere in the headline
+    # This ensures no asset is "orphaned" due to clause splitting
+    all_assets = detect_assets(text_lower)
+    
+    # Strategy 1: Split on major conjunctions and punctuation for DIRECTION extraction
+    # This handles: "Dollar Surges While Gold Retreats"
+    split_patterns = [
+        r'\s+while\s+',
+        r'\s+as\s+',
+        r'\s+even as\s+',
+        r'\s+whereas\s+',
+        r'\s+but\s+',
+        r'\s+yet\s+',
+        r'\s+meanwhile\s+',
+        r'\s+however\s+',
+        r'\s+though\s+',
+        r'\s+although\s+',
+        r';\s*',  # Semicolon separator
+        r',\s+and\s+',  # Comma-and separator
+    ]
+    
+    # Build combined split pattern
+    combined_pattern = '|'.join(f'({p})' for p in split_patterns)
+    
+    # Split text into clauses
+    clauses = re.split(combined_pattern, text_lower, flags=re.IGNORECASE)
+    # Filter out None and separator matches
+    clauses = [c.strip() for c in clauses if c and c.strip() and len(c.strip()) > 3]
+    
+    # If no splits found, treat entire text as one clause
+    if not clauses:
+        clauses = [text_lower]
+    
+    # Track which assets have been assigned directions
+    assets_with_directions = set()
+    
+    # Process each clause for DIRECTION extraction only
+    for clause in clauses:
+        clause_assets = set()
+        clause_direction = 'neutral'
+        
+        # Find assets in this clause
+        for asset_id, keywords in ASSET_KEYWORDS.items():
+            for keyword in keywords:
+                if re.search(r'\b' + re.escape(keyword) + r"'?s?\b", clause):
+                    clause_assets.add(asset_id)
+                    break  # Found this asset, move to next
+        
+        # Find direction in this clause
+        clause_direction = infer_direction_from_clause(clause)
+        
+        # Assign direction to each asset found in this clause
+        for asset in clause_assets:
+            # Only override if we found a non-neutral direction or asset not yet assigned
+            if asset not in asset_movements or clause_direction != 'neutral':
+                asset_movements[asset] = clause_direction
+                assets_with_directions.add(asset)
+    
+    # Strategy 2: Proximity-based refinement for assets not yet assigned direction
+    # This catches assets that might have been missed by clause splitting
+    remaining_assets = all_assets - assets_with_directions
+    
+    if remaining_assets or len(clauses) == 1:
+        proximity_movements = extract_asset_movement_by_proximity(text)
+        for asset, direction in proximity_movements.items():
+            if asset not in asset_movements or asset_movements[asset] == 'neutral':
+                asset_movements[asset] = direction
+    
+    # CRITICAL: Ensure ALL detected assets have at least a neutral direction
+    # This prevents any asset from being "orphaned" due to clause splitting
+    for asset in all_assets:
+        if asset not in asset_movements:
+            asset_movements[asset] = 'neutral'
+    
+    return asset_movements
+
+
+def infer_direction_from_clause(clause: str) -> str:
+    """
+    Infer direction from a single clause (no conjunction interference).
+    """
+    clause_lower = clause.lower()
+    
+    # Check for strong negative first (more specific)
+    for indicator in MOVEMENT_INDICATORS['strong_negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'negative'
+    
+    for indicator in MOVEMENT_INDICATORS['negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'negative'
+    
+    for indicator in MOVEMENT_INDICATORS['weak_negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'negative'
+    
+    # Check for strong positive
+    for indicator in MOVEMENT_INDICATORS['strong_positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'positive'
+    
+    for indicator in MOVEMENT_INDICATORS['positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'positive'
+    
+    for indicator in MOVEMENT_INDICATORS['weak_positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'positive'
+    
+    # Check neutral
+    for indicator in MOVEMENT_INDICATORS['neutral']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', clause_lower):
+            return 'neutral'
+    
+    return 'neutral'
+
+
+def extract_asset_movement_by_proximity(text: str) -> Dict[str, str]:
+    """
+    Match movements to assets using proximity/word distance.
+    
+    For each asset, find the closest movement indicator and assign that direction.
+    Forward movements (after asset mention) are slightly preferred.
+    
+    Returns:
+        Dict mapping asset_id to direction
+    """
+    text_lower = text.lower()
+    asset_movements = {}
+    
+    # Get all asset positions
+    asset_positions = get_asset_positions(text_lower)
+    
+    # Get all movement positions
+    movement_positions = get_all_movement_positions(text_lower)
+    
+    if not movement_positions:
+        return asset_movements
+    
+    # For each asset, find closest movement indicator
+    for asset_id, positions in asset_positions.items():
+        closest_direction = 'neutral'
+        closest_distance = float('inf')
+        
+        for asset_start, asset_end in positions:
+            asset_center = (asset_start + asset_end) / 2
+            
+            for move_start, move_end, indicator, direction in movement_positions:
+                move_center = (move_start + move_end) / 2
+                distance = abs(asset_center - move_center)
+                
+                # Slight preference for movement that comes after asset mention
+                # (e.g., "Dollar surges" vs "surging Dollar")
+                if move_center > asset_center:
+                    distance *= 0.9  # 10% boost for forward movement
+                
+                if distance < closest_distance:
+                    closest_distance = distance
+                    closest_direction = direction
+        
+        if closest_distance < float('inf'):
+            asset_movements[asset_id] = closest_direction
+    
+    return asset_movements
+
+
+# ============================================================================
 # CAUSAL PATTERN DEFINITIONS
 # ============================================================================
 
@@ -558,11 +842,28 @@ CAUSAL_PATTERNS = [
         'priority': 8
     },
     
-    # NEW PATTERNS - Priority 1: Simple juxtaposition patterns (CRITICAL for coverage)
+    # CRITICAL FIX #1: Passive voice pattern (Headline #1: "shares lifted BY jobs report")
+    {
+        'name': 'passive_voice_by',
+        'pattern': r'(shares?|stocks?|dollar|bond|gold|yield|market|equit|treasur|currencies?)\s+\w+\s+by\s+.*?(jobs?|employment|payroll|rate cut|rate hike|fed)',
+        'requires_movement': True,
+        'priority': 10
+    },
+    
+    # CRITICAL FIX #2: Before/Ahead of temporal patterns (Headlines #2, #5)
+    # These handle REVERSE temporal direction: [movement] BEFORE/AHEAD OF [event]
+    {
+        'name': 'movement_before_event',
+        'pattern': r'(shares?|stocks?|dollar|bond|gold|yield|market|equit|treasur)\s+(rose?|fell|climbed|dropped|gained|lost|rallied|slumped|surged|plunged|advanced|declined|dropped|soar|jump|spike|drifts?|ticks?|edges?|inch)\s+(before|ahead of|in advance of|prior to)\s+.*(jobs?|employment|payroll|rate cut|rate hike|fed)',
+        'priority': 10
+    },
+    
+    # CRITICAL FIX #3: Expanded movement verb list (Headlines #9, #10)
+    # Added: jump, soar, spike, drifts, ticks, edges, inches, leap, dive, wanes, ebbs, pares, trims
     {
         'name': 'asset_movement_on_event',
-        'pattern': r'(stocks?|dollar|bond|gold|yield|market|shares?|equit|treasur)\s+(rose?|fell|climbed|dropped|gained|lost|rallied|slumped|surged|plunged|advanced|declined|weakened|strengthened)\s+(on|after|following|as|amid|with)\s+.*(jobs?|employment|payroll|rate|fed|labor|labour)',
-        'priority': 10  # Very high priority
+        'pattern': r'(shares?|stocks?|dollar|bond|gold|yield|market|equit|treasur|currencies?)\s+(rose?|fell|climbed|dropped|gained|lost|rallied|slumped|surged|plunged|advanced|declined|weakened|strengthened|soar|soars|soared|jump|jumps|jumped|spike|spikes|spiked|drifts?|drifting|ticks?|ticking|edges?|edging|inches?|inching|leap|leaps|leaped|dive|dives|dived|wanes?|waning|ebbs?|ebbing|pares?|paring|trims?|trimming|extends?|extending)\s+(on|after|following|as|amid|with)\s+.*(jobs?|employment|payroll|rate cut|rate hike|fed|labor|labour)',
+        'priority': 10
     },
     {
         'name': 'asset_direction_ahead',
@@ -712,12 +1013,13 @@ def detect_mechanisms(text: str) -> Set[str]:
     Returns set of mechanism IDs.
     """
     detected = set()
+    text_lower = text.lower()
     
     for mech_key, mech_config in MECHANISM_KEYWORDS.items():
         for pattern in mech_config['patterns']:
-            if re.search(pattern, text, re.IGNORECASE):
+            if re.search(pattern, text_lower, re.IGNORECASE):
                 detected.add(mech_config['id'])
-                break
+                break  # Found this mechanism, move to next
     
     return detected
 
@@ -733,55 +1035,59 @@ def detect_employment_strength(text: str) -> Optional[str]:
     text_lower = text.lower()
     
     strong_indicators = [
-        'strong.*job', 'robust.*job', 'blowout.*job', 'solid.*job',
-        'beat.*expect', 'exceed.*expect', 'better.*than.*expect',
-        'surprise.*job', 'stunning.*job', 'crush', 'smashing',
-        # NEW: Priority 3 additions
-        'upbeat.*job', 'upbeat.*employment', 'upbeat.*labor',
-        'upbeat.*payroll', 'upbeat.*nonfarm',
-        'tight.*labor', 'labor.*tight', 'market.*tighten',
-        'labor.*improv', 'employment.*improv',
-        'claims.*fall', 'claims.*drop', 'claims.*declin',
-        'payrolls.*beat', 'payrolls.*exceed',
-        'stronger.*than.*expect', 'larger.*than.*expect',
-        'jobs.*added', 'employment.*growth',
-        'labor.*resilient', 'labor.*robust',
-        'nonfarm.*rise', 'payroll.*rise',
-        # ADDITIONAL patterns for coverage
-        'payroll.*beat', 'payrolls?.*beat', 'jobs?.*beat',
-        'robust.*hiring', 'strong.*hiring',
-        'labor.*strength', 'employment.*strength',
-        'healthy.*labor', 'healthy.*employment',
+        r'strong.*job', r'robust.*job', r'blowout.*job', r'solid.*job',
+        r'beat.*expect', r'exceed.*expect', r'better.*than.*expect',
+        r'surprise.*job', r'stunning.*job', r'crush', r'smashing',
+        r'upbeat.*job', r'upbeat.*employment', r'upbeat.*labor',
+        r'upbeat.*payroll', r'upbeat.*nonfarm',
+        r'tight.*labor', r'labor.*tight', r'market.*tighten',
+        r'labor.*improv', r'employment.*improv',
+        r'claims.*fall', r'claims.*drop', r'claims.*declin',
+        r'payrolls.*beat', r'payrolls.*exceed',
+        r'stronger.*than.*expect', r'larger.*than.*expect',
+        r'jobs.*added', r'employment.*growth',
+        r'labor.*resilient', r'labor.*robust',
+        r'nonfarm.*rise', r'payroll.*rise',
+        r'payroll.*beat', r'payrolls?.*beat', r'jobs?.*beat',
+        r'robust.*hiring', r'strong.*hiring',
+        r'labor.*strength', r'employment.*strength',
+        r'healthy.*labor', r'healthy.*employment',
     ]
     
     weak_indicators = [
-        'weak.*job', 'soft.*job', 'tepid.*job', 'disappointing.*job',
-        'dismal.*job', 'grim.*job', 'miss.*expect', 'below.*expect',
-        'worse.*than.*expect', 'slump', 'faltered',
-        # NEW: Priority 3 additions
-        'labor.*weaken', 'labor.*soft', 'labor.*cool',
-        'employment.*weaken', 'employment.*disappoint',
-        'claims.*rise', 'claims.*jump', 'claims.*climb',
-        'claims.*unexpectedly.*high', 'claims.*surge',
-        'bad.*reading', 'disappointing.*reading',
-        'weaker.*than.*expect', 'fell.*short', 'worse.*than.*forecast',
-        'labor.*slack', 'jobless.*rate.*rise',
-        'job.*loss', 'jobs.*lost',
-        # ADDITIONAL patterns for coverage
-        'payrolls?.*miss', 'jobs?.*miss', 'payrolls?.*disappoint',
-        'weak.*hiring', 'soft.*hiring', 'hiring.*slow',
-        'labor.*deteriorat', 'employment.*deteriorat',
-        'sluggish.*labor', 'sluggish.*employment',
+        r'weak.*job', r'disappointing.*job', r'miss.*expect',
+        r'soft.*job', r'tepid.*job', r'dismal.*job',
+        r'worse.*than.*expect', r'below.*expect',
+        r'claims.*rise', r'claims.*jump', r'claims.*surge',
+        r'unemployment.*rise', r'unemployment.*climb',
+        r'labor.*soften', r'labor.*weaken', r'labor.*cool',
+        r'payrolls.*miss', r'payrolls.*disappoint',
+        r'weaker.*than.*expect', r'smaller.*than.*expect',
+        r'job.*loss', r'jobs?.*lost', r'layoff',
+        r'labor.*slack', r'employment.*weak',
+        r'gloomy.*job', r'grim.*job', r'bleak.*job',
+        r'slowing.*hiring', r'hiring.*slow',
     ]
     
-    mixed_indicators = ['mixed.*job', 'mixed.*employment', 'mixed.*labor']
+    has_strong = False
+    has_weak = False
     
-    if any(re.search(pattern, text_lower) for pattern in strong_indicators):
-        return 'strong'
-    elif any(re.search(pattern, text_lower) for pattern in weak_indicators):
-        return 'weak'
-    elif any(re.search(pattern, text_lower) for pattern in mixed_indicators):
+    for pattern in strong_indicators:
+        if re.search(pattern, text_lower):
+            has_strong = True
+            break
+    
+    for pattern in weak_indicators:
+        if re.search(pattern, text_lower):
+            has_weak = True
+            break
+    
+    if has_strong and has_weak:
         return 'mixed'
+    elif has_strong:
+        return 'strong'
+    elif has_weak:
+        return 'weak'
     
     return None
 
@@ -795,53 +1101,67 @@ def detect_assets(text: str) -> Set[str]:
     Detect all asset types mentioned in the text.
     Returns set of asset type identifiers.
     
-    Improved to handle:
+    Able to handle:
     - Multi-word phrases better
     - Possessives (e.g., "dollar's")
     - Case variations
     """
-    detected = set()
     text_lower = text.lower()
+    detected = set()
     
-    for asset_type, keywords in ASSET_KEYWORDS.items():
+    for asset_id, keywords in ASSET_KEYWORDS.items():
         for keyword in keywords:
-            # For multi-word keywords, use simple substring matching
-            if ' ' in keyword:
-                if keyword in text_lower:
-                    detected.add(asset_type)
-                    break
-            else:
-                # For single-word keywords, use more flexible word boundary
-                # This pattern allows for possessives and common variations
-                # (?<![a-z]) means not preceded by lowercase letter
-                # (?![a-z]) means not followed by lowercase letter
-                pattern = r'(?<![a-z])' + re.escape(keyword) + r'(?:\'s|s)?(?![a-z])'
-                if re.search(pattern, text_lower):
-                    detected.add(asset_type)
-                    break
+            # Use word boundary matching with possessive handling
+            pattern = r'\b' + re.escape(keyword) + r"'?s?\b"
+            if re.search(pattern, text_lower):
+                detected.add(asset_id)
+                break  # Found this asset type, move to next
     
     return detected
 
 
 def infer_direction_from_movement(text: str) -> str:
     """
-    Infer direction based on movement indicators in the text.
-    """
-    # Check negative first (often more explicit)
-    for strength in ['strong_negative', 'negative', 'weak_negative']:
-        for indicator in MOVEMENT_INDICATORS[strength]:
-            if indicator in text:
-                return 'negative'
+    Infer the overall direction from movement indicators in text.
+    This is the fallback for when asset-specific direction is not available.
     
-    # Check positive
-    for strength in ['strong_positive', 'positive', 'weak_positive']:
-        for indicator in MOVEMENT_INDICATORS[strength]:
-            if indicator in text:
-                return 'positive'
+    Priority order: strong_negative > negative > weak_negative > 
+                    strong_positive > positive > weak_positive > neutral
+    
+    Returns:
+        'positive', 'negative', or 'neutral'
+    """
+    text_lower = text.lower()
+    
+    # Check for strong negative first (most impactful)
+    for indicator in MOVEMENT_INDICATORS['strong_negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'negative'
+    
+    for indicator in MOVEMENT_INDICATORS['negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'negative'
+    
+    for indicator in MOVEMENT_INDICATORS['weak_negative']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'negative'
+    
+    # Check for strong positive
+    for indicator in MOVEMENT_INDICATORS['strong_positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'positive'
+    
+    for indicator in MOVEMENT_INDICATORS['positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'positive'
+    
+    for indicator in MOVEMENT_INDICATORS['weak_positive']:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+            return 'positive'
     
     # Check neutral
     for indicator in MOVEMENT_INDICATORS['neutral']:
-        if indicator in text:
+        if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
             return 'neutral'
     
     return 'neutral'
@@ -850,256 +1170,261 @@ def infer_direction_from_movement(text: str) -> str:
 def infer_direction_with_context(text: str, event_type: str, 
                                   employment_strength: Optional[str] = None,
                                   mechanisms: Set[str] = None,
-                                  asset_type: str = None) -> str:
+                                  asset_type: str = None,
+                                  base_direction: str = None) -> str:
     """
     Infer direction considering event type and mechanisms.
     
+    Args:
+        text: The headline text
+        event_type: Type of event detected
+        employment_strength: 'strong', 'weak', 'mixed', or None
+        mechanisms: Set of mechanism IDs detected
+        asset_type: The specific asset type being analyzed
+        base_direction: Pre-computed direction for this specific asset (from proximity matching)
+    
     Employment heuristics:
-    - Weak jobs + rate cut bets ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ dovish ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ USD down, bonds up, gold up, stocks mixed-positive
-    - Strong jobs + hike worries ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ hawkish ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ USD up, bonds down, gold down, stocks mixed-negative
+    - Weak jobs + rate cut bets → dovish → USD down, bonds up, gold up, stocks mixed-positive
+    - Strong jobs + hike worries → hawkish → USD up, bonds down, gold down, stocks mixed-negative
+    
+    Returns:
+        Direction string: 'positive', 'negative', or 'neutral'
     """
-    # Start with movement-based direction
-    base_direction = infer_direction_from_movement(text)
+    # Use provided base_direction, or infer from full text as fallback
+    if base_direction is not None:
+        direction = base_direction
+    else:
+        direction = infer_direction_from_movement(text)
     
     if mechanisms is None:
         mechanisms = set()
     
-    text_lower = text.lower()
-    
-    # NEW: Special handling for VIX (inverse to risk sentiment)
+    # Apply context-aware adjustments based on asset type and mechanisms
+    # VIX has inverse relationship - if market is positive, VIX should be negative
     if asset_type == 'vix':
-        # Check for positive sentiment/news ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ VIX should go down
-        if any(word in text_lower for word in ['upbeat', 'strong', 'beat', 'exceed', 'robust', 'solid']):
-            if base_direction == 'positive':
-                return 'negative'  # Invert for VIX
-        # Negative sentiment/news ÃƒÂ¢Ã¢â‚¬Â Ã¢â‚¬â„¢ VIX should go up
-        elif any(word in text_lower for word in ['weak', 'disappointing', 'miss', 'dismal', 'grim']):
-            if base_direction == 'negative':
-                return 'positive'  # Invert for VIX
+        # Check if headline explicitly mentions VIX direction
+        text_lower = text.lower()
+        vix_explicit = False
+        for indicator in MOVEMENT_INDICATORS['positive'] + MOVEMENT_INDICATORS['strong_positive']:
+            if 'vix' in text_lower and indicator in text_lower:
+                vix_explicit = True
+                break
+        for indicator in MOVEMENT_INDICATORS['negative'] + MOVEMENT_INDICATORS['strong_negative']:
+            if 'vix' in text_lower and indicator in text_lower:
+                vix_explicit = True
+                break
         
-        # Default invert logic for VIX
-        if base_direction == 'positive':
-            return 'negative'
-        elif base_direction == 'negative':
-            return 'positive'
+        # Only invert if VIX direction wasn't explicitly stated
+        if not vix_explicit:
+            if direction == 'positive':
+                direction = 'negative'
+            elif direction == 'negative':
+                direction = 'positive'
     
-    # Adjust based on employment strength and mechanisms
-    if event_type == 'employment' and employment_strength:
-        if employment_strength == 'weak':
-            if 'mech:rate_cut_bets' in mechanisms or 'mech:dovish_repricing' in mechanisms:
-                # Weak jobs + dovish ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ generally positive for bonds/gold, negative for USD
-                if any(word in text.lower() for word in ['dollar', 'usd', 'greenback']):
-                    return 'negative'
-                elif any(word in text.lower() for word in ['bond', 'treasur', 'gold']):
-                    return 'positive'
-        
-        elif employment_strength == 'strong':
-            if 'mech:rate_hike_worries' in mechanisms or 'mech:hawkish_repricing' in mechanisms:
-                # Strong jobs + hawkish ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ generally positive for USD, negative for bonds/gold
-                if any(word in text.lower() for word in ['dollar', 'usd', 'greenback']):
-                    return 'positive'
-                elif any(word in text.lower() for word in ['bond', 'treasur', 'gold']):
-                    return 'negative'
+    # Apply employment strength heuristics
+    if employment_strength == 'strong':
+        # Strong jobs typically positive for USD, negative for rate-sensitive assets
+        if asset_type == 'dollar':
+            if direction == 'neutral':
+                direction = 'positive'
+        elif asset_type in ['bonds', 'yields', 'gold']:
+            if direction == 'neutral':
+                direction = 'negative'
+    elif employment_strength == 'weak':
+        # Weak jobs typically negative for USD, positive for rate-sensitive assets (rate cut hopes)
+        if asset_type == 'dollar':
+            if direction == 'neutral':
+                direction = 'negative'
+        elif asset_type in ['bonds', 'gold']:
+            if direction == 'neutral':
+                direction = 'positive'
     
-    return base_direction
+    # Apply mechanism-based adjustments
+    if 'mech:rate_cut_bets' in mechanisms or 'mech:dovish_repricing' in mechanisms:
+        if asset_type == 'dollar' and direction == 'neutral':
+            direction = 'negative'
+        elif asset_type in ['stocks', 'gold', 'bonds'] and direction == 'neutral':
+            direction = 'positive'
+    
+    if 'mech:rate_hike_bets' in mechanisms or 'mech:hawkish_repricing' in mechanisms:
+        if asset_type == 'dollar' and direction == 'neutral':
+            direction = 'positive'
+        elif asset_type in ['stocks', 'bonds'] and direction == 'neutral':
+            direction = 'negative'
+    
+    return direction
 
 
 def match_causal_pattern(text: str, asset_type: str) -> Optional[Tuple[str, str]]:
     """
-    Match causal patterns in the text for a given asset.
-    Returns (pattern_name, direction) or None.
+    Match the text against causal patterns and return the best match.
+    
+    Args:
+        text: The headline text (lowercase)
+        asset_type: The asset type being analyzed
+    
+    Returns:
+        Tuple of (pattern_name, inferred_direction) or None if no match
     """
-    sorted_patterns = sorted(CAUSAL_PATTERNS, key=lambda x: x['priority'], reverse=True)
+    text_lower = text.lower()
+    best_match = None
+    best_priority = -1
     
-    for pattern_config in sorted_patterns:
-        if re.search(pattern_config['pattern'], text, re.IGNORECASE):
-            direction = infer_direction_from_movement(text)
-            return (pattern_config['name'], direction)
+    # Check if there's any movement indicator in the text (for patterns that require it)
+    has_movement = False
+    for direction_list in MOVEMENT_INDICATORS.values():
+        for indicator in direction_list:
+            if re.search(r'\b' + re.escape(indicator) + r'\b', text_lower):
+                has_movement = True
+                break
+        if has_movement:
+            break
     
-    # Fallback
-    return ('general_context', infer_direction_from_movement(text))
+    for pattern_config in CAUSAL_PATTERNS:
+        pattern_name = pattern_config['name']
+        pattern = pattern_config['pattern']
+        priority = pattern_config.get('priority', 5)
+        requires_movement = pattern_config.get('requires_movement', False)
+        
+        # Skip patterns that require movement if none found
+        if requires_movement and not has_movement:
+            continue
+        
+        if re.search(pattern, text_lower, re.IGNORECASE):
+            if priority > best_priority:
+                best_priority = priority
+                # Infer direction from the pattern match context
+                direction = infer_direction_from_movement(text_lower)
+                best_match = (pattern_name, direction)
+    
+    return best_match
 
 
-def extract_multi_event_relations(titles: List[str], df: pd.DataFrame = None) -> Dict:
+def extract_multi_event_relations(titles: List[str], df = None) -> Dict:
     """
-    Extract causal relationships from news headlines with multi-event support.
+    Extract multi-event causal relationships from a list of headlines.
+    Now uses asset-aware direction extraction to handle multiple assets
+    moving in different directions within the same headline.
+    
+    IMPORTANT DESIGN PRINCIPLE:
+    - Events are detected at HEADLINE level (shared across ALL assets in that headline)
+    - Directions are detected at CLAUSE/ASSET level (asset-specific)
+    - ALL assets in a headline share the SAME causal event
+    
+    This ensures that in "Dollar Surges While Gold Retreats on Strong Jobs Data":
+    - Both Dollar and Gold are linked to the employment event (headline-level causality)
+    - But Dollar gets 'positive' direction, Gold gets 'negative' direction (clause-level direction)
+    
+    Args:
+        titles: List of headline strings
+        df: Optional DataFrame with additional metadata (date, url columns)
     
     Returns:
         Dictionary containing:
-        - events: Set of event nodes
-        - mechanisms: Set of mechanism nodes
-        - assets: Set of asset nodes
-        - event_edges: List of (event, mechanism/asset, ...) tuples
-        - mechanism_edges: List of (mechanism, asset, ...) tuples
+        - events: Set of detected event types
+        - mechanisms: Set of detected mechanism IDs
+        - assets: Set of detected asset types
+        - event_edges: List of (event, target, target_type, direction, title, pattern, date, url) tuples
+        - mechanism_edges: List of (mechanism, asset, direction, title, pattern, date, url) tuples
     """
     relations = {
         'events': set(),
         'mechanisms': set(),
         'assets': set(),
-        'event_edges': [],  # Event -> Mechanism or Event -> Asset
-        'mechanism_edges': [],  # Mechanism -> Asset
+        'event_edges': [],
+        'mechanism_edges': [],
     }
     
     for idx, title in enumerate(titles):
+        if not title or not isinstance(title, str):
+            continue
+            
         title_lower = title.lower()
         
-        # Detect events
-        event_types = detect_event_type(title_lower)
-        if not any(event_types.values()):
-            continue
-        
-        # Extract metadata
+        # Get metadata from DataFrame if available
         date = None
         url = None
-        if df is not None:
-            try:
-                date = df.iloc[idx].get('Date')
-                url = df.iloc[idx].get('Url')
-            except:
-                pass
+        if df is not None and idx < len(df):
+            if 'date' in df.columns:
+                date = str(df.iloc[idx]['date']) if pd.notna(df.iloc[idx]['date']) else None
+            if 'url' in df.columns:
+                url = str(df.iloc[idx]['url']) if pd.notna(df.iloc[idx]['url']) else None
         
-        # CRITICAL FIX: Set primary_event BEFORE fallback logic uses it
-        # Track employment strength for context-aware direction inference
-        employment_strength = None
+        # =====================================================================
+        # Step 1: Detect events at HEADLINE level (applies to ALL assets)
+        # =====================================================================
+        event_types = detect_event_type(title_lower)
+        if not any(event_types.values()):
+            continue  # Skip headlines without relevant events
+        
+        # Determine primary event (this applies to ALL assets in the headline)
         primary_event = None
-        
         if event_types['employment']:
-            employment_strength = detect_employment_strength(title_lower)
             primary_event = 'employment'
-            relations['events'].add('employment')
-        
-        if event_types['rate_cut']:
+        elif event_types['rate_cut']:
             primary_event = 'rate_cut'
-            relations['events'].add('rate_cut')
-        
-        if event_types['rate_hike']:
+        elif event_types['rate_hike']:
             primary_event = 'rate_hike'
-            relations['events'].add('rate_hike')
         
-        # Detect mechanisms and assets
+        if not primary_event:
+            continue
+        
+        relations['events'].add(primary_event)
+        
+        # =====================================================================
+        # Step 2: Detect mechanisms at HEADLINE level (shared context)
+        # =====================================================================
         mechanisms = detect_mechanisms(title_lower)
-        assets = detect_assets(title_lower)
-        
-        # MAXIMALLY IMPROVED: Very aggressive fallback asset detection
-        # If no assets detected, check for ANY financial/market context
-        if not assets:
-            # EXPANDED LIST - Cast wide net for financial context
-            financial_indicators = [
-                # Explicit market/trading terms
-                'wall', 'street', 'trading', 'investor', 'investors', 'trader', 'traders',
-                'exchange', 'exchanges', 'bourse', 'bourses', 'market', 'markets',
-                
-                # Company/corporate terms
-                'company', 'companies', 'firm', 'firms', 'corporate', 'corporates',
-                'business', 'businesses', 'industry', 'sector', 'sectors',
-                
-                # Movement/action verbs (suggest market activity)
-                'rally', 'rallies', 'rallied', 'plunge', 'plunges', 'plunged',
-                'surge', 'surges', 'surged', 'slump', 'slumps', 'slumped',
-                'jump', 'jumps', 'jumped', 'drop', 'drops', 'dropped',
-                'rise', 'rises', 'rose', 'risen', 'fall', 'falls', 'fell', 'fallen',
-                'climb', 'climbs', 'climbed', 'slide', 'slides', 'slid',
-                'gain', 'gains', 'gained', 'lose', 'loses', 'lost', 'loss', 'losses',
-                'advance', 'advances', 'advanced', 'decline', 'declines', 'declined',
-                'soar', 'soars', 'soared', 'sink', 'sinks', 'sank', 'sunk',
-                'tumble', 'tumbles', 'tumbled', 'rebound', 'rebounds', 'rebounded',
-                'recover', 'recovers', 'recovered', 'extend', 'extends', 'extended',
-                'trim', 'trims', 'trimmed', 'pare', 'pares', 'pared',
-                'shed', 'sheds', 'add', 'adds', 'added',
-                'erase', 'erases', 'erased', 'slip', 'slips', 'slipped',
-                'dip', 'dips', 'dipped', 'edge', 'edges', 'edged',
-                'ease', 'eases', 'eased', 'firm', 'firms', 'firmed',
-                'boost', 'boosts', 'boosted', 'lift', 'lifts', 'lifted',
-                'weigh', 'weighs', 'weighed', 'drag', 'drags', 'dragged',
-                'support', 'supports', 'supported', 'pressure', 'pressures', 'pressured',
-                'strengthen', 'strengthens', 'strengthened', 'weaken', 'weakens', 'weakened',
-                'improve', 'improves', 'improved', 'worsen', 'worsens', 'worsened',
-                
-                # Directional terms
-                'higher', 'lower', 'up', 'down', 'upward', 'downward',
-                'bullish', 'bearish', 'hawkish', 'dovish',
-                
-                # Sentiment/psychology terms
-                'volatil', 'sentiment', 'confidence', 'optimism', 'pessimism',
-                'risk', 'fear', 'appetite', 'mood', 'outlook', 'expectations',
-                'nervous', 'cautious', 'hopeful', 'worried', 'concerned',
-                
-                # Market states/conditions
-                'tight', 'loose', 'accommodative', 'restrictive',
-                'liquid', 'illiquid', 'stress', 'stressed', 'calm',
-                
-                # Financial activities
-                'buying', 'selling', 'flows', 'inflows', 'outflows',
-                'allocation', 'positioning', 'exposure', 'hedge', 'hedging',
-                
-                # Pricing/valuation terms
-                'price', 'prices', 'pricing', 'priced', 'valued', 'valuation', 'valuations',
-                'return', 'returns', 'yield', 'yields', 'premium', 'discount',
-                
-                # Market reactions/movements
-                'react', 'reacts', 'reacted', 'respond', 'responds', 'responded',
-                'reaction', 'response', 'move', 'moves', 'moved', 'movement',
-                'open', 'opens', 'opened', 'opening', 'close', 'closes', 'closed', 'closing',
-                'settle', 'settles', 'settled', 'settlement',
-                
-                # Economic/financial concepts
-                'economic', 'economy', 'growth', 'recession', 'recovery',
-                'expansion', 'contraction', 'gdp', 'inflation', 'deflation',
-                
-                # Action/planning terms (suggest market positioning)
-                'action plan', 'strategy', 'consider', 'watch', 'eye on', 'focus',
-                'prepare', 'brace', 'await', 'anticipate', 'expect',
-                
-                # Comparative/performance terms
-                'best', 'worst', 'top', 'bottom', 'outperform', 'underperform',
-                'winner', 'loser', 'leader', 'laggard',
-                
-                # Time-based market terms
-                'session', 'day', 'week', 'month', 'quarter', 'year',
-                'overnight', 'intraday', 'premarket', 'aftermarket',
-                
-                # NEW: Event-related context markers
-                'ahead of', 'before', 'after', 'following', 'post', 'pre',
-                'on', 'amid', 'amidst', 'as', 'with', 'after',
-                'awaiting', 'eyeing', 'watching', 'focusing',
-                
-                # Service/sector indicators
-                'services', 'supplier', 'suppliers', 'manufacturer', 'manufacturers',
-                'producer', 'producers', 'provider', 'providers'
-            ]
-            
-            # If ANY financial context present, use market_general as catchall
-            if any(term in title_lower for term in financial_indicators):
-                assets = {'market_general'}
-            else:
-                # STILL create edge if we have event - use generic 'economy' as super-fallback
-                # This ensures maximum coverage: event + any context → edge
-                if primary_event or any(event_types.values()):
-                    assets = {'market_general'}
-                else:
-                    # Truly no relevance - skip
-                    continue
-        
-        # Add to sets (already added in event detection above)
         relations['mechanisms'].update(mechanisms)
+        
+        # =====================================================================
+        # Step 3: Detect ALL assets in the headline
+        # =====================================================================
+        assets = detect_assets(title_lower)
+        if not assets:
+            continue  # Skip if no assets detected
+        
         relations['assets'].update(assets)
         
-        # Build edges with improved direction inference (per asset)
-        event_type_for_context = 'employment' if event_types['employment'] else 'monetary_policy'
+        # =====================================================================
+        # Step 4: Detect employment strength at HEADLINE level
+        # =====================================================================
+        employment_strength = None
+        if primary_event == 'employment':
+            employment_strength = detect_employment_strength(title_lower)
         
+        # =====================================================================
+        # Step 5: Extract ASSET-SPECIFIC directions using clause/proximity matching
+        # Direction is per-asset, but the causal event is shared across all assets
+        # =====================================================================
+        asset_movements = extract_asset_movement_pairs(title)
+        
+        # =====================================================================
+        # Step 6: Create edges - ALL assets linked to the SAME headline-level event
+        # but with their own ASSET-SPECIFIC directions
+        # =====================================================================
         for asset in assets:
-            # Compute asset-specific direction (important for VIX inverse logic)
+            # Get asset-specific direction from proximity matching
+            base_direction = asset_movements.get(asset, 'neutral')
+            
+            # Apply context-aware adjustments (VIX inverse, employment strength heuristics, etc.)
             direction = infer_direction_with_context(
-                title_lower, event_type_for_context, employment_strength, mechanisms, asset
+                title_lower, 
+                primary_event,
+                employment_strength=employment_strength,
+                mechanisms=mechanisms,
+                asset_type=asset,
+                base_direction=base_direction
             )
             
+            # Match causal pattern for this asset
+            result = match_causal_pattern(title_lower, asset)
+            pattern_name = result[0] if result else 'co_occurrence'
+            
             if mechanisms:
-                # Path: Event -> Mechanism -> Asset
+                # Path A: Event -> Mechanism -> Asset (3-layer)
                 for mechanism in mechanisms:
                     # Event -> Mechanism edge
-                    result = match_causal_pattern(title_lower, asset)
-                    pattern_name = result[0] if result else 'general_context'
-                    
                     relations['event_edges'].append((
                         primary_event,
                         mechanism,
@@ -1111,7 +1436,7 @@ def extract_multi_event_relations(titles: List[str], df: pd.DataFrame = None) ->
                         url
                     ))
                     
-                    # Mechanism -> Asset edges
+                    # Mechanism -> Asset edge
                     relations['mechanism_edges'].append((
                         mechanism,
                         asset,
@@ -1122,27 +1447,12 @@ def extract_multi_event_relations(titles: List[str], df: pd.DataFrame = None) ->
                         url
                     ))
             else:
-                # Direct path: Event -> Asset
-                # MAXIMALLY IMPROVED: If we have BOTH event and asset detected, ALWAYS create an edge
-                # The co-occurrence in a financial headline strongly suggests causal relevance
-                
-                result = match_causal_pattern(title_lower, asset)
-                pattern_name = result[0] if result else 'co_occurrence'
-                
-                # Use context-aware direction if available, otherwise use pattern-inferred
-                if result and result[1] != 'neutral':
-                    final_direction = result[1]
-                elif direction != 'neutral':
-                    final_direction = direction
-                else:
-                    final_direction = 'neutral'
-                
-                # ALWAYS create edge when both event and asset are present
+                # Path B: Event -> Asset (2-layer direct)
                 relations['event_edges'].append((
                     primary_event,
                     asset,
                     'asset',
-                    final_direction,
+                    direction,
                     title,
                     pattern_name,
                     date,
@@ -1307,7 +1617,7 @@ def build_multi_event_knowledge_graph(relations: Dict, summary: Dict) -> Dict:
     # Layer 1: Event Nodes
     event_display = {
         'monetary_policy': 'US Monetary Policy (Rate Cuts/Hikes)',
-        'labor_market': 'US Labor Market (Employment Data)'
+               'labor_market': 'US Labor Market (Employment Data)'
     }
     
     for event_id in sorted(relations['events']):
